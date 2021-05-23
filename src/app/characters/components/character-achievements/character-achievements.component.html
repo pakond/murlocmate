@@ -1,0 +1,69 @@
+<!-- <div class="row rounded text-center" style="width: 70%; margin: auto;">
+    <h5 style="background-color: #212529; padding: 10px; opacity: 0.8;">Achievements</h5>
+</div> -->
+<div class="row p-2 rounded">
+    <div class="col m-2 p-2 rounded" *ngIf="achievements2v.length > 0" style="background-color: #212529; opacity: 0.8;">
+        <div
+            class="row"
+            data-toggle="tooltip"
+            [title]="tooltipHtml('2v2')"
+        >
+            <div class="col-2">
+                <img [src]="getAchievement('2v')" [alt]="achievements2v[achievements2v.length-1].name">
+            </div>
+            <div class="col" style="font-size: 12px;">
+                {{ achievements2v[achievements2v.length-1].name }}
+                <br>
+                <small>{{ achievements2v[achievements2v.length-1].description }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col m-2 p-2 rounded" *ngIf="achievements3v.length > 0" style="background-color: #212529; opacity: 0.8;">
+        <div
+            class="row"
+            data-toggle="tooltip"
+            [title]="tooltipHtml('3v3')"
+        >
+            <div class="col-2">
+                <img [src]="getAchievement('3v')" [alt]="achievements3v[achievements3v.length-1].name">
+            </div>
+            <div class="col" style="font-size: 12px;">
+                {{ achievements3v[achievements3v.length-1].name }}
+                <br>
+                <small>{{ achievements3v[achievements3v.length-1].description }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col m-2 p-2 rounded" *ngIf="achievementsRbg.length > 0" style="background-color: #212529; opacity: 0.8;">
+        <div
+            class="row"
+            data-toggle="tooltip"
+            [title]="tooltipHtml('rbg')"
+        >
+            <div class="col-2">
+                <img [src]="getAchievement('rbg')" [alt]="achievementsRbg[achievementsRbg.length-1].name">
+            </div>
+            <div class="col" style="font-size: 12px;">
+                {{ achievementsRbg[achievementsRbg.length-1].name }}
+                <br>
+                <small>{{ achievementsRbg[achievementsRbg.length-1].description }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col m-2 p-2 rounded" *ngIf="achievementsRank.length > 0" style="background-color: #212529; opacity: 0.8;">
+        <div
+            class="row"
+            data-toggle="tooltip"
+            [title]="tooltipHtml('rank')"
+        >
+            <div class="col-2">
+                <img [src]="getAchievement('rank')" [alt]="achievementsRank[achievementsRank.length-1].name">
+            </div>
+            <div class="col" style="font-size: 12px;">
+                {{ achievementsRank[achievementsRank.length-1].name }}
+                <br>
+                <small>{{ achievementsRank[achievementsRank.length-1].description }}</small>
+            </div>
+        </div>
+    </div>
+</div>

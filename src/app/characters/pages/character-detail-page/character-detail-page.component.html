@@ -1,0 +1,65 @@
+<div 
+    *ngIf="exists; else elseBlock" 
+    class="row m-1 p-1" 
+    [style]="{
+        'background-image': 'url(' + character.media + ')',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center',
+        'background-size': 'cover',
+        'background-color': '#212529',
+        'color': 'white'
+    }"
+>
+    <app-character-general
+        [character]="character"
+    >
+    </app-character-general>
+
+    <app-character-ratings
+        [character]="character"
+    >
+    </app-character-ratings>
+    <app-character-customization
+        [character]="character"  
+    >
+    </app-character-customization>
+    <app-character-achievements
+        [character]="character"
+    >
+    </app-character-achievements>
+    <app-character-alters
+        [character]="character"
+    >
+    </app-character-alters>
+</div>
+
+<ng-template #elseBlock>
+    <div class="row text-center rounded m-1" style="background-color: #212529; color:white;">
+        <p class="mt-3">
+            <img [src]="regionImg(region)" [alt]="region" class="flag-small" />
+            <span style="color:red; margin: 0 5px 0 5px;">{{ name |titlecase }} - {{ realm | titlecase }} is not found</span>
+        </p>
+        <p>
+            <a 
+                target="_blank"
+                class="text-decoration-none"
+                style="color: white;"
+                *ngIf="region === 'us'; else regionElse"
+                href="https://worldofwarcraft.com/en-US/search/character?q={{ name }}"
+            >
+                    Click here to search {{ name | titlecase }} on battle.net armory
+            </a>
+            <ng-template #regionElse>
+                <a 
+                target="_blank"
+                class="text-decoration-none"
+                style="color: white;"
+                href="https://worldofwarcraft.com/en-GB/search/character?q={{ name }}"
+            >
+                    Click here to search {{ name | titlecase }} on battle.net armory
+            </a>
+            </ng-template>
+        </p>
+    </div>
+</ng-template>
+

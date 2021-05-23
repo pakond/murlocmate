@@ -1,0 +1,57 @@
+<div class="p-grid">
+    <div class="p-col-3 pt-2">
+        <img
+            [src]="character.avatar"
+            [alt]="character.name" 
+            [style]="{
+                'width': '150px',
+                'border': '2px solid ' + character.wow_class.color,
+                'vertical-align': 'middle',
+                'float': 'right'
+            }"
+        />
+    </div>
+    <div class="p-col-6 rounded pt-2 pb-3" style="text-align: left; background-color: #212529; opacity: 0.8;">
+        <img
+            [src]="character.region.icon"
+            [alt]="character.region.name"
+            class="flag-small"
+            style="margin: 0 5px 0 5px;"
+            data-toggle="tooltip" [title]="character.region.name"
+        />
+        <img
+            [src]="character.realm.icon"
+            [alt]="character.realm.name"
+            class="flag-small"
+            style="margin: 0 5px 0 5px;"
+            data-toggle="tooltip" [title]="character.realm.category"
+        />
+        <span [style]="{'color': character.wow_class.color}">{{ character.active_title || character.name | titlecase }}</span>
+        <hr>
+        {{ character.realm.slug | titlecase }} <span *ngIf="character.guild" style="color: yellow;"><{{ character.guild }}></span>
+        <hr>
+        <img
+            [src]="character.wow_class.icon"
+            [alt]="character.wow_class.name"
+            class="flag-small"
+            style="margin-right: 7px;"
+            data-toggle="tooltip" [title]="character.wow_class.name"
+        />
+        <img
+            [src]="character.spec?.icon"
+            [alt]="character.spec?.name"
+            class="flag-small"
+            data-toggle="tooltip" [title]="character.spec?.name"
+        />
+        {{ character.level === 60 ? 'Item level ' + character.item_level : 'Level ' + character.level }}
+    </div>
+    <div class="p-col-3 mt-4" style="text-align: left;">
+        <button type="button" class="btn btn-warning btn-sm" (click)="updateCharacter()">UPDATE NOW</button>
+        <br>
+        <small>Last Update</small>
+        <br>
+        {{ tiempo }}
+        <br>
+        <span style="color: yellow">{{ character.checked }} views</span>
+    </div>    
+</div>

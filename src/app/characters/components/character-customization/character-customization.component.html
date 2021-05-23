@@ -1,0 +1,84 @@
+<!-- <div class="row rounded text-center" style="width: 70%; margin: auto;">
+    <h5 style="background-color: #212529; padding: 10px; opacity: 0.8;">Customization</h5>
+</div> -->
+<div class="row text-center">
+    <div style="background-color: #212529; padding: 10px; opacity: 0.8;">
+        <img
+        *ngIf="character.covenant?.cid"
+        [src]="environment.staticImg + '/covenant/' + character.covenant?.cid + '.png'"
+        [alt]="character.covenant?.name"
+        style="vertical-align: middle; margin-right: 5px; width: 45px;"
+        >
+        <strong>{{ character.covenant?.name | titlecase }}</strong><small> - Rank {{ character?.covenant_rank }}</small>
+    </div>
+    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+        Soulbind Traits
+        <ul>
+            <li 
+                style="display: inline;"
+                *ngFor="let item of character.soulbind_abilities"
+            >
+                <a [href]="'https://www.wowhead.com/?spell=' + item.spell_id" target="_blank">
+                    <img 
+                    [src]="environment.staticImg + '/soulbind_trait/' + item.sid + '.png'"
+                    [alt]="item.name"
+                    style="margin: 5px; border: 1px solid yellow; width: 40px;"
+                    >
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+        Conduits
+        <ul>
+            <li 
+                style="display: inline;"
+                *ngFor="let item of character.conduits"
+            >
+                <a [href]="'https://www.wowhead.com/?spell=' + item.spell_id + '&rank=' + item.rank" target="_blank">
+                    <img 
+                    [src]="environment.staticImg + '/conduit/' + item.cid + '.png'"
+                    [alt]="item.name"
+                    style="margin: 5px; border: 1px solid yellow; width: 40px;"
+                    >
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row text-center">
+    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+        Talents
+        <ul>
+            <li 
+                style="display: inline;"
+                *ngFor="let item of character.talents"
+            >
+                <a [href]="'https://www.wowhead.com/?spell=' + item.spell_id" target="_blank">
+                    <img 
+                    [src]="environment.staticImg + '/talent/' + item.talent_id + '.png'"
+                    [alt]="item.name"
+                    style="margin: 5px; border: 1px solid yellow; width: 40px;"
+                    >
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+        Honor Talents
+        <ul>
+            <li 
+                style="display: inline;"
+                *ngFor="let item of character.pvp_talents"
+            >
+                <a [href]="'https://www.wowhead.com/?spell=' + item.spell_id" target="_blank">
+                    <img 
+                    [src]="environment.staticImg + '/pvp_talent/' + item.talent_id + '.png'"
+                    [alt]="item.name"
+                    style="margin: 5px; border: 1px solid yellow; width: 40px;"
+                    >
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

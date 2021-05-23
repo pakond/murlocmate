@@ -1,0 +1,12 @@
+.cg-avatar {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .cg-avatar {
+        display: inline;
+        width: 150px;
+        vertical-align: middle;
+        float: right;
+    }
+}

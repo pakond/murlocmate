@@ -49,13 +49,13 @@ export class InputSearchComponent implements OnInit {
             let i: number = 0;
             while (realms.length > i && (eu+us+kr) < 12) {
               if (realms[i].region === 'eu' && eu < 4) {
-                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
+                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, faction: '', 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
                 eu++;
               } else if (realms[i].region === 'us' && us < 4) {
-                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
+                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, faction: '', 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
                 us++;
               } else if (realms[i].region === 'kr' && kr < 4) {
-                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
+                this.suggest.push({'name': name, 'realm': realms[i].slug, 'wow_class': '', 'region': realms[i].region, faction: '', 'max_3v3_rating': 0, 'max_2v2_rating': 0 })
                 kr++;
               }
               i+=1

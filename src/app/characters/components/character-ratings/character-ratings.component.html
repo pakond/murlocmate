@@ -1,13 +1,12 @@
 <div 
-    class="row mt-3 mb-3 justify-content-center text-center"
+    class="row mt-2 justify-content-center text-center"
     *ngIf="character.ratings"
     >
     <div 
-        class="col-3 rounded m-2" 
-        style="background-color: #212529; padding: 10px; opacity: 0.8;"
+        class="col-md-3 rounded m-1" 
+        style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
     >
-        2v2 Rating
-        <hr>
+        <span style="text-decoration: underline;">2v2 Rating</span>
         <div class="row">
             <div class="col">
                 <h1 style="color: purple">{{ character.ratings[0]?.rating }}</h1>
@@ -20,15 +19,13 @@
                 <small>{{ character.ratings[0]?.winratio }}% win ratio</small>
             </div>
         </div>    
-        <hr>
-        <small>Highest {{ character.max_2v2_rating }}</small>
+        <span style="color: yellow;"><small>Highest {{ character.max_2v2_rating }}</small></span>
     </div>
     <div 
-        class="col-3 rounded m-2" 
-        style="background-color: #212529; padding: 10px; opacity: 0.8;"
+        class="col-md-3 rounded m-1" 
+        style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
     >
-        3v3 Rating
-        <hr>
+        <span style="text-decoration: underline;">3v3 Rating</span>
         <div class="row">
             <div class="col">
                 <h1 style="color: orangered">{{ character.ratings[1]?.rating }}</h1>
@@ -41,15 +38,13 @@
                 <small>{{ character.ratings[1]?.winratio }}% win ratio</small>
             </div>
         </div>    
-        <hr>
-        <small>Highest {{ character.max_3v3_rating }}</small>
+        <span style="color: yellow;"><small>Highest {{ character.max_3v3_rating }}</small></span>
     </div>
     <div 
-        class="col-3 rounded m-2" 
-        style="background-color: #212529; padding: 10px; opacity: 0.8;"
+        class="col-md-3 rounded m-1" 
+        style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
     >
-        RBG Rating
-        <hr>
+        <span style="text-decoration: underline;">RBG Rating</span>
         <div class="row">
             <div class="col">
                 <h1 style="color: blue">{{ character.ratings[2]?.rating }}</h1>
@@ -62,7 +57,6 @@
                 <small>{{ character.ratings[2]?.winratio }}% win ratio</small>
             </div>
         </div>    
-        <hr>
-        <small>Highest {{ character.max_rbg_rating }}</small>
+        <span style="color: yellow;"><small>Highest {{ character.max_rbg_rating }}</small></span>
     </div>
 </div>

@@ -1,17 +1,5 @@
-<!-- <div class="row rounded text-center" style="width: 70%; margin: auto;">
-    <h5 style="background-color: #212529; padding: 10px; opacity: 0.8;">Customization</h5>
-</div> -->
-<div class="row text-center">
-    <div style="background-color: #212529; padding: 10px; opacity: 0.8;">
-        <img
-        *ngIf="character.covenant?.cid"
-        [src]="environment.staticImg + '/covenant/' + character.covenant?.cid + '.png'"
-        [alt]="character.covenant?.name"
-        style="vertical-align: middle; margin-right: 5px; width: 45px;"
-        >
-        <strong>{{ character.covenant?.name | titlecase }}</strong><small> - Rank {{ character?.covenant_rank }}</small>
-    </div>
-    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+<div class="row justify-content-center text-center">
+    <div class="col-md-5 col-lg-3 rounded m-2" style="background-color:rgba(33, 37, 41, 0.4); padding: 10px;">
         Soulbind Traits
         <ul>
             <li 
@@ -27,8 +15,6 @@
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
         Conduits
         <ul>
             <li 
@@ -45,9 +31,18 @@
             </li>
         </ul>
     </div>
-</div>
-<div class="row text-center">
-    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
+    <div class="col-md-1 col-lg-1 rounded m-2" style="background-color:rgba(33, 37, 41, 0.4); padding: 10px;">
+        <img
+        *ngIf="character.covenant?.cid"
+        [src]="environment.staticImg + '/covenant/' + character.covenant?.cid + '.png'"
+        [alt]="character.covenant?.name"
+        style="vertical-align: middle; margin: 25px 5px 0 0; width: 45px;"
+        >
+        <br>
+        <strong>{{ character.covenant?.name | titlecase }}</strong><small>
+        <br>Rank {{ character?.covenant_rank }}</small>
+    </div>
+    <div class="col-md-5 col-lg-3 rounded m-2" style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;">
         Talents
         <ul>
             <li 
@@ -63,8 +58,6 @@
                 </a>
             </li>
         </ul>
-    </div>
-    <div class="col rounded m-2" style="background-color: #212529; padding: 10px; opacity: 0.8;">
         Honor Talents
         <ul>
             <li 

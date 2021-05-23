@@ -30,4 +30,9 @@ export class CharacterAltersComponent implements OnInit {
     return this.sharedService.clases.filter(wowClass => wowClass.name === name)[0].icon!;
 
   }
+
+  factionIcon(name: string): string {
+    return this.sharedService.factions.filter(faction => faction.name === name)[0].icon!;
+
+  }
 }

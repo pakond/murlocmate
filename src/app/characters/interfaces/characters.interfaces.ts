@@ -4,6 +4,7 @@ export interface SearchCharacters {
     name: string;
     realm: string;
     region: string;
+    faction: string;
     wow_class: string;
     max_3v3_rating: number;
     max_2v2_rating: number;

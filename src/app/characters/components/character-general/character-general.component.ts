@@ -9,7 +9,8 @@ import { CharactersService } from '../../services/characters.service';
 
 @Component({
   selector: 'app-character-general',
-  templateUrl: './character-general.component.html'
+  templateUrl: './character-general.component.html',
+  styleUrls: ['./character-general.component.scss']
 })
 export class CharacterGeneralComponent implements OnChanges {
 

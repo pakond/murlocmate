@@ -1,28 +1,35 @@
-<div class="row rounded text-center" style="width: 70%; margin: auto;">
+<div class="row rounded justify-content-center text-center">
     <div
         *ngFor="let item of character.alters" 
-        class="col p-2 m-1 rounded"
-        style="background-color: #212529; padding: 10px; opacity: 0.8;"
+        class="col-md-2 p-2 m-1 rounded"
+        style="background-color:rgba(33, 37, 41, 0.4); padding: 10px;"
     >
         <img
             [src]="regionIcon(item.region)"
             [alt]="item.region"
             class="flag-small"
             style="margin: 0 5px 0 5px;"
-            data-toggle="tooltip" [title]="character.region.name"
+            data-toggle="tooltip" [title]="item.region"
+        />
+        <img
+            [src]="factionIcon(item.faction)"
+            [alt]="item.faction"
+            class="flag-small"
+            style="margin: 0 5px 0 5px;"
+            data-toggle="tooltip" [title]="item.faction"
         />
         <img
             [src]="classIcon(item.wow_class)"
             [alt]="item.wow_class"
             class="flag-small"
             style="margin: 0 5px 0 5px;"
-            data-toggle="tooltip" [title]="character.region.name"
+            data-toggle="tooltip" [title]="item.wow_class"
         />
         <a href="#" 
             [style]="{'text-decoration': 'none', 'color': classColor(item.wow_class)}"
             [routerLink]="['/character', item.region, item.realm, item.name]" 
         >
-            <h5><strong>{{ item.name | titlecase }}-{{ item.realm | titlecase}}</strong></h5>
+            <h6><strong>{{ item.name | titlecase }}-{{ item.realm | titlecase}}</strong></h6>
         </a>
         <small>3v3 Exp: {{ item.max_3v3_rating }}</small> - 
         <small>2v2 Exp: {{ item.max_2v2_rating }}</small>

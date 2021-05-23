@@ -1,6 +1,6 @@
 <div 
     *ngIf="exists; else elseBlock" 
-    class="row m-1 p-1" 
+    class="row p-1 mt-2" 
     [style]="{
         'background-image': 'url(' + character.media + ')',
         'background-repeat': 'no-repeat',
@@ -19,14 +19,14 @@
         [character]="character"
     >
     </app-character-ratings>
-    <app-character-customization
-        [character]="character"  
-    >
-    </app-character-customization>
     <app-character-achievements
         [character]="character"
     >
     </app-character-achievements>
+    <app-character-customization
+        [character]="character"  
+    >
+    </app-character-customization>
     <app-character-alters
         [character]="character"
     >

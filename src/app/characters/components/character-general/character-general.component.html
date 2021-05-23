@@ -1,17 +1,15 @@
-<div class="p-grid">
-    <div class="p-col-3 pt-2">
+<div class="row justify-content-center text-center">
+    <div class="col-md-2 pt-2">
         <img
             [src]="character.avatar"
             [alt]="character.name" 
             [style]="{
-                'width': '150px',
-                'border': '2px solid ' + character.wow_class.color,
-                'vertical-align': 'middle',
-                'float': 'right'
+                'border': '2px solid ' + character.wow_class.color
             }"
+            class="cg-avatar"
         />
     </div>
-    <div class="p-col-6 rounded pt-2 pb-3" style="text-align: left; background-color: #212529; opacity: 0.8;">
+    <div class="col-md-6 m-1 rounded pt-2 pb-3" style="text-align: left;">
         <img
             [src]="character.region.icon"
             [alt]="character.region.name"
@@ -45,7 +43,7 @@
         />
         {{ character.level === 60 ? 'Item level ' + character.item_level : 'Level ' + character.level }}
     </div>
-    <div class="p-col-3 mt-4" style="text-align: left;">
+    <div class="col-md-2 m-1 rounded p-2" style="text-align: left;">
         <button type="button" class="btn btn-warning btn-sm" (click)="updateCharacter()">UPDATE NOW</button>
         <br>
         <small>Last Update</small>

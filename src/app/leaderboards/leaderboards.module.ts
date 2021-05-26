@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LeaderboardsPageComponent } from './pages/leaderboards-page/leaderboards-page.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -9,7 +10,8 @@ import { LeaderboardsPageComponent } from './pages/leaderboards-page/leaderboard
     LeaderboardsPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class LeaderboardsModule { }

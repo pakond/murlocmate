@@ -11,7 +11,7 @@ import { CharacterRatingsComponent } from './components/character-ratings/charac
 import { CharacterCustomizationComponent } from './components/character-customization/character-customization.component';
 import { CharacterAchievementsComponent } from './components/character-achievements/character-achievements.component';
 import { CharacterAltersComponent } from './components/character-alters/character-alters.component';
-
+import { PipesModule } from '../shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -29,6 +29,7 @@ import { CharacterAltersComponent } from './components/character-alters/characte
     FormsModule,
     HttpClientModule,
     RouterModule,
+    PipesModule
   ],
   exports: [
     InputSearchComponent,

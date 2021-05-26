@@ -104,25 +104,13 @@ export class InputSearchComponent implements OnInit {
   }
 
   goCharacter(character: SearchCharacters): void {
-    this.term = character.name + '-' + character.realm
+    // this.term = character.name + '-' + character.realm
+    this.term = ''
     this.router.navigateByUrl(`character/${character.region}/${character.realm}/${character.name}`)
   }
 
   search() {
     this.goCharacter(this.suggest[0])
-  }
-
-  regionImg(name: string): string {
-    return this.sharedService.regions.filter(region => region.name === name)[0].icon;
-  }
-
-  classImg(name: string): string {
-    return this.sharedService.clases.filter(wowClass => wowClass.name === name)[0].icon || '';
-  }
-
-  classColor(name: string): string {
-    const color = this.sharedService.clases.filter(wowClass => wowClass.name === name)[0].color;
-    return 'color: ' + color + ';';
   }
 
 }

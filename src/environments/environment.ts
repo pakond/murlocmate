@@ -4,8 +4,9 @@
 
 export const environment = {
   apiUrl: 'http://212.71.245.14/api',
-  apiKey: '7rH0VqKz.ZAkauLmaVs9ArEstgNkci1vyMQWOVsyr',
+  apiKey: 'MOuCL3aV.w0n7kKzjgQnwyWRn8uvmlKgNijF7Gwbn',
   staticImg: 'http://212.71.245.14/static/img/',
+  currentSeason: 4,
   production: false
 };
 

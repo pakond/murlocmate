@@ -1,1 +1,37 @@
-<p class="text-white">leaderboards of {{ bracket }}</p>
+<div 
+    *ngIf="leaderboard" 
+    class="row p-3" 
+    [style]="{
+        'background-image': 'url(../assets/fondo.jpg)',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center',
+        'background-attachment': 'fixed',
+        'background-size': 'cover',
+        'background-color': '#212529',
+        'color': 'white'
+    }"
+>   
+    <div 
+        class="col p-2 text-center bracket" 
+        routerLink="/leaderboards/2v2" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
+    >
+        <strong>2v2</strong>
+    </div>
+    <div 
+        class="col p-2 text-center mid-bracket" 
+        routerLink="/leaderboards/3v3" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
+    >
+        <strong>3v3</strong>
+    </div>
+    <div 
+        class="col p-2 text-center bracket" 
+        routerLink="/leaderboards/rbg" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
+    >
+        <strong>RBG</strong>
+    </div>
+    <ul *ngIf="leaderboard">
+        <li *ngFor="let item of leaderboard.results">
+            {{ item.character.name }} - {{ item.rating }}
+        </li>
+    </ul>
+</div>

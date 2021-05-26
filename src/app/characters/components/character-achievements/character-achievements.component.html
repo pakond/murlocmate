@@ -3,13 +3,13 @@
         <div
             class="row"
             data-toggle="tooltip"
-            [title]="tooltipHtml('2v2')"
+            [title]="tooltipAchievements2v"
         >
             <div class="col-2">
-                <img [src]="getAchievement('2v')" [alt]="achievements2v[achievements2v.length-1].name">
+                <img [src]="imgAchievements2v" [alt]="achievements2v[achievements2v.length-1].name">
             </div>
             <div class="col" style="margin-left: 5px;">
-                {{ achievements2v[achievements2v.length-1].name }}
+                <span style="color: yellow;">{{ achievements2v[achievements2v.length-1].name }}</span>
                 <br>
                 <small>{{ achievements2v[achievements2v.length-1].description }}</small>
             </div>
@@ -19,13 +19,13 @@
         <div
             class="row"
             data-toggle="tooltip"
-            [title]="tooltipHtml('3v3')"
+            [title]="tooltipAchievements3v"
         >
             <div class="col-2">
-                <img [src]="getAchievement('3v')" [alt]="achievements3v[achievements3v.length-1].name">
+                <img [src]="imgAchievements3v" [alt]="achievements3v[achievements3v.length-1].name">
             </div>
             <div class="col" style="margin-left: 5px;">
-                {{ achievements3v[achievements3v.length-1].name }}
+                <span style="color: yellow;">{{ achievements3v[achievements3v.length-1].name }}</span>
                 <br>
                 <small>{{ achievements3v[achievements3v.length-1].description }}</small>
             </div>
@@ -35,13 +35,13 @@
         <div
             class="row"
             data-toggle="tooltip"
-            [title]="tooltipHtml('rbg')"
+            [title]="tooltipAchievementsRbg"
         >
             <div class="col-2">
-                <img [src]="getAchievement('rbg')" [alt]="achievementsRbg[achievementsRbg.length-1].name">
+                <img [src]="imgAchievementsRbg" [alt]="achievementsRbg[achievementsRbg.length-1].name">
             </div>
             <div class="col" style="margin-left: 5px;">
-                {{ achievementsRbg[achievementsRbg.length-1].name }}
+                <span style="color: yellow;">{{ achievementsRbg[achievementsRbg.length-1].name }}</span>
                 <br>
                 <small>{{ achievementsRbg[achievementsRbg.length-1].description }}</small>
             </div>
@@ -51,13 +51,13 @@
         <div
             class="row"
             data-toggle="tooltip"
-            [title]="tooltipHtml('rank')"
+            [title]="tooltipAchievementsRank"
         >
             <div class="col-2">
-                <img [src]="getAchievement('rank')" [alt]="achievementsRank[achievementsRank.length-1].name">
+                <img [src]="imgAchievementsRank" [alt]="achievementsRank[achievementsRank.length-1].name">
             </div>
             <div class="col" style="margin-left: 5px;">
-                {{ achievementsRank[achievementsRank.length-1].name }}
+                <span style="color: yellow;">{{ achievementsRank[achievementsRank.length-1].name }}</span>
                 <br>
                 <small>{{ achievementsRank[achievementsRank.length-1].description }}</small>
             </div>

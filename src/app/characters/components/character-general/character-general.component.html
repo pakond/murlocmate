@@ -11,6 +11,15 @@
     </div>
     <div class="col-md-6 m-1 rounded pt-2 pb-3" style="text-align: left;">
         <img
+            [src]="character.faction.name | factionIcon"
+            [alt]="character.faction.name"
+            class="flag-small"
+            style="margin-right: 7px;"
+            data-toggle="tooltip" [title]="character.faction.name"
+        />
+        <span [style]="{'color': character.wow_class.color}">{{ character.active_title || character.name | titlecase }}</span>
+        <hr>
+        <img
             [src]="character.region.icon"
             [alt]="character.region.name"
             class="flag-small"
@@ -24,8 +33,6 @@
             style="margin: 0 5px 0 5px;"
             data-toggle="tooltip" [title]="character.realm.category"
         />
-        <span [style]="{'color': character.wow_class.color}">{{ character.active_title || character.name | titlecase }}</span>
-        <hr>
         {{ character.realm.slug | titlecase }} <span *ngIf="character.guild" style="color: yellow;"><{{ character.guild }}></span>
         <hr>
         <img
@@ -44,12 +51,28 @@
         {{ character.level === 60 ? 'Item level ' + character.item_level : 'Level ' + character.level }}
     </div>
     <div class="col-md-2 m-1 rounded p-2" style="text-align: left;">
-        <button type="button" class="btn btn-warning btn-sm" (click)="updateCharacter()">UPDATE NOW</button>
+        <button 
+            *ngIf="update; else disableUpdate;"
+            type="button" 
+            class="btn btn-warning btn-sm" 
+            (click)="updateCharacter()
+        ">
+            Update Now
+        </button>
+        <ng-template #disableUpdate>
+            <button 
+                type="button" 
+                class="btn btn-warning btn-sm disabled" 
+                (click)="updateCharacter()
+            ">
+                Update Now
+            </button>
+        </ng-template>
         <br>
         <small>Last Update</small>
         <br>
         {{ tiempo }}
         <br>
         <span style="color: yellow">{{ character.checked }} views</span>
-    </div>    
+    </div>
 </div>

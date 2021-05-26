@@ -11,8 +11,9 @@ export class SharedService {
   private apiUrl: string = 'http://212.71.245.14/api';
   private apiKey: string = 'udDjDRVX.xKv2SAtdkEoVIesxVGYe61u0bBYziXkp';
 
-  regions: Region[] = [{"id": 1, "name": "eu", "icon": "http://212.71.245.14/static/img/region/union-europea_22IU8I1.png"}, {"id": 2, "name": "us", "icon": "http://212.71.245.14/static/img/region/estados-unidos-de-america_AnWOzR0.png"}, {"id": 3, "name": "kr", "icon": "http://212.71.245.14/static/img/region/south-korea.png"}];
-  factions: Faction[] = [{"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, {"id": 3, "name": "Neutral", "name_es": "Neutral", "icon": "http://212.71.245.14/static/img/faction/neutral_HKnTn5j.png"}];
+  regions: Region[] = [{"id": 1, "name": "eu", "icon": "http://212.71.245.14/static/img/region/union-europea.png"}, {"id": 2, "name": "us", "icon": "http://212.71.245.14/static/img/region/estados-unidos-de-america.png"}, {"id": 3, "name": "kr", "icon": "http://212.71.245.14/static/img/region/south-korea.png"}];
+
+  factions: Faction[] = [{"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde.png"}, {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance.png"}, {"id": 3, "name": "Neutral", "name_es": "Neutral", "icon": "http://212.71.245.14/static/img/faction/neutral.png"}];
 
   races: Race[] = [{"id": 1, "name": "Human", "name_es": "Humano", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/1_male.png", "icon_female": "http://212.71.245.14/static/img/race/1_female.png"},{"id": 2, "name": "Orc", "name_es": "Orco", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/2_male.png", "icon_female": "http://212.71.245.14/static/img/race/2_female.png"},{"id": 3, "name": "Dwarf", "name_es": "Enano", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/3_male.png", "icon_female": "http://212.71.245.14/static/img/race/3_female.png"},{"id": 4, "name": "Night Elf", "name_es": "Elfo de la noche", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}, {"id": 12, "name": "Demon Hunter", "color": "#A330C9", "icon": "http://212.71.245.14/static/img/class/12.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/4_male.png", "icon_female": "http://212.71.245.14/static/img/race/4_female.png"},{"id": 5, "name": "Undead", "name_es": "No-muerto", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/5_male.png", "icon_female": "http://212.71.245.14/static/img/race/5_female.png"},{"id": 6, "name": "Tauren", "name_es": "Tauren", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/6_male.png", "icon_female": "http://212.71.245.14/static/img/race/6_female.png"},{"id": 7, "name": "Gnome", "name_es": "Gnomo", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/7_male.png", "icon_female": "http://212.71.245.14/static/img/race/7_female.png"},{"id": 8, "name": "Troll", "name_es": "Trol", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/8_male.png", "icon_female": "http://212.71.245.14/static/img/race/8_female.png"},{"id": 9, "name": "Goblin", "name_es": "Goblin", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/9_male.png", "icon_female": "http://212.71.245.14/static/img/race/9_female.png"},{"id": 10, "name": "Blood Elf", "name_es": "Elfo de sangre", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 12, "name": "Demon Hunter", "color": "#A330C9", "icon": "http://212.71.245.14/static/img/class/12.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/10_male.png", "icon_female": "http://212.71.245.14/static/img/race/10_female.png"},{"id": 11, "name": "Draenei", "name_es": "Draenei", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/11_male.png", "icon_female": "http://212.71.245.14/static/img/race/11_female.png"},{"id": 12, "name": "Worgen", "name_es": "Huargen", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/22_male.png", "icon_female": "http://212.71.245.14/static/img/race/22_female.png"},{"id": 13, "name": "Pandaren", "name_es": "Pandaren", "faction": {"id": 3, "name": "Neutral", "name_es": "Neutral", "icon": "http://212.71.245.14/static/img/faction/neutral_HKnTn5j.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/24_male.png", "icon_female": "http://212.71.245.14/static/img/race/24_female.png"},{"id": 14, "name": "Pandaren", "name_es": "Pandaren", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/25_male.png", "icon_female": "http://212.71.245.14/static/img/race/25_female.png"},{"id": 15, "name": "Pandaren", "name_es": "Pandaren", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": false, "icon_male": "http://212.71.245.14/static/img/race/26_male.png", "icon_female": "http://212.71.245.14/static/img/race/26_female.png"},{"id": 16, "name": "Nightborne", "name_es": "Nocheterna", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/27_male.png", "icon_female": "http://212.71.245.14/static/img/race/27_female.png"},{"id": 17, "name": "Highmountain Tauren", "name_es": "Tauren Monte Alto", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/28_male.png", "icon_female": "http://212.71.245.14/static/img/race/28_female.png"},{"id": 18, "name": "Void Elf", "name_es": "Elfo del Vac\u00edo", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/29_male.png", "icon_female": "http://212.71.245.14/static/img/race/29_female.png"},{"id": 19, "name": "Lightforged Draenei", "name_es": "Draenei forjado por la Luz", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/30_male.png", "icon_female": "http://212.71.245.14/static/img/race/30_female.png"},{"id": 20, "name": "Zandalari Troll", "name_es": "Trol Zandalari", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/31_male.png", "icon_female": "http://212.71.245.14/static/img/race/31_female.png"},{"id": 21, "name": "Kul Tiran", "name_es": "Ciudadano de Kul Tiras", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}, {"id": 11, "name": "Druid", "color": "#FF7C0A", "icon": "http://212.71.245.14/static/img/class/11.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/32_male.png", "icon_female": "http://212.71.245.14/static/img/race/32_female.png"},{"id": 22, "name": "Dark Iron Dwarf", "name_es": "Enano Hierro Negro", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 2, "name": "Paladin", "color": "#F48CBA", "icon": "http://212.71.245.14/static/img/class/2.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/34_male.png", "icon_female": "http://212.71.245.14/static/img/race/34_female.png"},{"id": 23, "name": "Vulpera", "name_es": "Vulpera", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/35_male.png", "icon_female": "http://212.71.245.14/static/img/race/35_female.png"},{"id": 24, "name": "Mag'har Orc", "name_es": "Orco Mag'har", "faction": {"id": 1, "name": "Horde", "name_es": "Horda", "icon": "http://212.71.245.14/static/img/faction/horde_vrT1Mnc.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 7, "name": "Shaman", "color": "#0070DD", "icon": "http://212.71.245.14/static/img/class/7.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/36_male.png", "icon_female": "http://212.71.245.14/static/img/race/36_female.png"},{"id": 25, "name": "Mechagnome", "name_es": "Mecagnomo", "faction": {"id": 2, "name": "Alliance", "name_es": "Alianza", "icon": "http://212.71.245.14/static/img/faction/alliance_PPapTzW.png"}, "wow_clases": [{"id": 1, "name": "Warrior", "color": "#C69B6D", "icon": "http://212.71.245.14/static/img/class/1.jpg"}, {"id": 3, "name": "Hunter", "color": "#AAD372", "icon": "http://212.71.245.14/static/img/class/3.jpg"}, {"id": 4, "name": "Rogue", "color": "#FFF468", "icon": "http://212.71.245.14/static/img/class/4.jpg"}, {"id": 5, "name": "Priest", "color": "#FFFFFF", "icon": "http://212.71.245.14/static/img/class/5.jpg"}, {"id": 6, "name": "Death Knight", "color": "#C41E3A", "icon": "http://212.71.245.14/static/img/class/6.jpg"}, {"id": 8, "name": "Mage", "color": "#3FC7EB", "icon": "http://212.71.245.14/static/img/class/8.jpg"}, {"id": 9, "name": "Warlock", "color": "#8788EE", "icon": "http://212.71.245.14/static/img/class/9.jpg"}, {"id": 10, "name": "Monk", "color": "#00FF98", "icon": "http://212.71.245.14/static/img/class/10.jpg"}], "is_allied_race": true, "icon_male": "http://212.71.245.14/static/img/race/37_male.png", "icon_female": "http://212.71.245.14/static/img/race/37_female.png"}];
   
@@ -53,6 +54,7 @@ export class SharedService {
     const hora2 = date2.getHours();
     const minuto2 = date2.getMinutes();
     const segundo2 = date2.getSeconds();
+    const diasMes = [31,28,31,30,31,30,31,31,30,31,30,31]
 
     let diffAnio = anio2 - anio1;
     let diffMes = mes2 - mes1;
@@ -61,19 +63,50 @@ export class SharedService {
     let diffMinuto = minuto2 - minuto1;
     let diffSegundo = segundo2 - segundo1;
 
-    // const diasMes = [31,28,31,30,31,30,31,31,30,31,30,31]
-    
-    let tiempo = ''
+    if (diffSegundo < 0) {
+      diffSegundo = segundo2 + (60 - segundo1);
+      diffMinuto--;
+    }
+
+    if (diffMinuto < 0) {
+      diffMinuto = minuto2 + (60 - minuto1);
+      diffHora--;
+    }
 
     if (diffHora < 0) {
-      diffDia -= 1;
-      diffHora = 24 - Math.abs(diffHora);
+      diffHora = hora2 + (24 - hora1);
+      diffDia--;
     }
-    if (diffMinuto < 0) {
-      diffHora -= 1;
-      diffMinuto = 60 - Math.abs(diffMinuto);
+
+    if (diffDia < 0) {
+      diffDia = dia2 + (30 - dia1);
+      diffMes--;
     }
-    if (diffDia > 0) {
+
+    if (diffMes < 0) {
+      diffMes = mes2 + (12 - mes1);
+      diffAnio--;
+    }
+
+    let tiempo = ''
+
+    if (diffAnio > 0) {
+      tiempo += diffAnio;
+      if (diffAnio > 1) {
+        tiempo += ' years'
+      }
+      else { tiempo += ' year'}
+    }
+
+    if (diffMes > 0) {
+      tiempo += diffMes;
+      if (diffMes > 1) {
+        tiempo += ' months'
+      }
+      else { tiempo += ' month'}
+    }
+
+    if (diffAnio === 0 && diffDia > 0) {
       tiempo += diffDia;
       if (diffDia> 1) {
         tiempo += ' days'
@@ -81,7 +114,7 @@ export class SharedService {
       else { tiempo += ' day'}
     }
 
-    if (diffHora > 0) {
+    if (diffAnio === 0 && diffMes === 0 && diffHora > 0) {
       tiempo += ' ' + diffHora;
       if (diffHora > 1) {
         tiempo += ' hours'
@@ -89,23 +122,146 @@ export class SharedService {
       else { tiempo += ' hour'}
     }
 
-    if (diffDia === 0 && Math.abs(diffMinuto) > 0) {
-      tiempo += ' ' + Math.abs(diffMinuto);
+    if (diffAnio === 0 && diffMes === 0 && diffDia === 0 && diffMinuto > 0) {
+      tiempo += ' ' + diffMinuto;
       if (diffMinuto > 1) {
         tiempo += ' minutes'
       }
       else { tiempo += ' minute'}
     } 
     
-    if (diffDia === 0 && diffHora === 0 && diffSegundo > 0) {
+    if (diffAnio === 0 && diffMes === 0 && diffDia === 0 && diffHora === 0 && diffSegundo > 0) {
       tiempo += ' ' + diffSegundo;
       if (diffSegundo > 1) {
         tiempo += ' seconds'
       }
       else { tiempo += ' second'}
     }
-
+    
     return tiempo
   }
 
+  calculaTiempo2(fecha1: Date, fecha2: Date): string {
+    // Calcular diferencia en milisegundos
+
+    // fecha1 = new Date('2021-03-26')
+
+    let diff = fecha2.getTime() - fecha1.getTime();
+    
+    const mes1 = fecha1.getMonth()
+    const mes2 = fecha2.getMonth()
+    const diasMes = [31,28,31,30,31,30,31,31,30,31,30,31]
+
+    const ms_d = 1000 * 60 * 60 * 24;
+    const ms_h = 1000 * 60 * 60;
+    const ms_m = 1000 * 60;
+    const ms_s = 1000;
+
+    let mes = 0;
+    let d = 0;
+    let h = 0;
+    let m = 0;
+    let s = 0;
+
+    let texto = '';
+
+    // Calcular días
+    while (diff / ms_d >= 1) {
+      d += 1;
+      diff -= ms_d;
+    }
+
+    // Calcular horas
+    while (diff / ms_h >= 1) {
+      h += 1;
+      diff -= ms_h;
+    }
+
+    // Calcular minutos
+    while (diff / ms_m >= 1) {
+      m += 1;
+      diff -= ms_m;
+    }
+
+    // Calcular segundos
+    while (diff / ms_s >=1) {
+      s += 1;
+      diff -= ms_s;
+    }
+
+    // Calcular meses
+    // if (
+    //   fecha1.getFullYear() === fecha2.getFullYear()
+    //   && fecha2.getMonth() - fecha1.getMonth() > 0
+    // ) {
+    //   for (let i = fecha1.getMonth(); i <= fecha2.getMonth(); i++) {
+    //     const dias = diasMes[i]
+    //     if (fecha2.getDate() >= fecha1.getDate()) {
+    //       mes++;
+    //       d -= dias
+    //     }
+    //     else if (fecha2.getDate() < fecha1.getDate()) {
+    //       if (i === fecha1.getMonth()) {
+    //         d -= diasMes[i] - fecha1.getDate();
+    //       }
+    //       if (i === fecha2.getMonth()) {
+            
+    //       }
+    //     } 
+    //   }
+    // }
+
+    let tiempo = ''
+
+    // if (mes > 0) {
+    //   if (mes > 1) {
+    //     tiempo += mes + ' months ';
+    //   }
+    //   else {
+    //     tiempo += mes + ' month ';
+    //   }
+    // }
+
+    if (d > 0) {
+      if (d > 1) {
+        tiempo += d + ' days ';
+      }
+      else {
+        tiempo += d + ' day ';
+      }
+    }
+
+    if (h > 0) {
+      if (h > 1) {
+        tiempo += h + ' hours ';
+      }
+      else {
+        tiempo += h + ' hour ';
+      }
+    }
+
+    if (m > 0 && d <= 0) {
+      if (m > 1) {
+        tiempo += m + ' minutes ';
+      }
+      else {
+        tiempo += m + ' minute ';
+      }
+    }
+
+    if (s > 0 && h <= 0) {
+      if (s > 1) {
+        tiempo += s + ' seconds ';
+      }
+      else {
+        tiempo += s + ' second ';
+      }
+    }
+
+    texto += mes + ' months ' + d + ' days, ' + h + ' hours, ' + m + ' minutes and ' + s + ' seconds.';
+    return tiempo;
+  }
+
 }
+
+

@@ -14,25 +14,5 @@ export class CharacterAltersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  classColor(wowClass: string): string {
-    return this.sharedService.getClases.filter(wClass => wClass.name === wowClass)[0].color!;
-  }
-
-  regionIcon(name: string): string {
-
-    return this.sharedService.regions.filter(region => region.name === name)[0].icon;
-
-  }
-
-  classIcon(name: string): string {
-
-    return this.sharedService.clases.filter(wowClass => wowClass.name === name)[0].icon!;
-
-  }
-
-  factionIcon(name: string): string {
-    return this.sharedService.factions.filter(faction => faction.name === name)[0].icon!;
-
-  }
+  
 }

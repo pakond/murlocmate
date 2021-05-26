@@ -1,39 +1,25 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="border-bottom: 1px solid white;">
-    <div class="container">
-      <a class="navbar-brand" routerLink="" routerLinkActive="active">{{ title | titlecase}}</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="cutoffs" routerLinkActive="active">Cutoffs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="charts" routerLinkActive="active">Charts</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Archives
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="archives/s30" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">S30</a></li>
-              <li><a class="dropdown-item" routerLink="archives/s29" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">S29</a></li>
-              <li><a class="dropdown-item" routerLink="archives/s28" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">S28</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Leaderboards
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="leaderboards/2v2" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">2V2</a></li>
-              <li><a class="dropdown-item" routerLink="leaderboards/3v3" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">3V3</a></li>
-              <li><a class="dropdown-item" routerLink="leaderboards/rbg" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">RBG</a></li>
-            </ul>
-          </li>
-        </ul>
-        <app-input-search></app-input-search>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" routerLink="" routerLinkActive="active">{{ title | titlecase}}.io</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="cutoffs" routerLinkActive="active">Cutoffs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="charts" routerLinkActive="active">Charts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/archives/s29" routerLinkActive="active">Archives</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/leaderboards/3v3" routerLinkActive="active">Leaderboards</a>
+        </li>
+      </ul>
+      <app-input-search></app-input-search>
     </div>
-  </nav>
+  </div>
+</nav>

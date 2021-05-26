@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CharactersModule } from './characters/characters.module';
+import { LeaderboardsModule } from './leaderboards/leaderboards.module';
 import { SharedModule } from './shared/shared.module';
 
 // Cambiar locale
@@ -19,7 +21,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    LeaderboardsModule,
+    CharactersModule
   ],
   providers: [
     // Cambiar locale

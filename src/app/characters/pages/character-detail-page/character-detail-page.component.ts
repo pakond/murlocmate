@@ -14,6 +14,7 @@ export class CharacterDetailPageComponent implements OnInit {
   name: string = '';
   realm: string = '';
   region: string = '';
+  regionImg: string = '';
   character!: Character;
   exists: boolean = false;
 
@@ -67,10 +68,6 @@ export class CharacterDetailPageComponent implements OnInit {
         }
       );
     });
-  }
-
-  regionImg(name: string): string {
-    return this.sharedService.regions.filter(region => region.name === name)[0].icon;
-
+    this.regionImg = this.sharedService.regions.filter(reg => reg.name === this.region)[0].icon;
   }
 }

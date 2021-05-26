@@ -5,28 +5,28 @@
         style="background-color:rgba(33, 37, 41, 0.4); padding: 10px;"
     >
         <img
-            [src]="regionIcon(item.region)"
+            [src]="item.region | regionIcon"
             [alt]="item.region"
             class="flag-small"
             style="margin: 0 5px 0 5px;"
             data-toggle="tooltip" [title]="item.region"
         />
         <img
-            [src]="factionIcon(item.faction)"
+            [src]="item.faction | factionIcon"
             [alt]="item.faction"
             class="flag-small"
             style="margin: 0 5px 0 5px;"
             data-toggle="tooltip" [title]="item.faction"
         />
         <img
-            [src]="classIcon(item.wow_class)"
+            [src]="item.wow_class | classIcon"
             [alt]="item.wow_class"
             class="flag-small"
             style="margin: 0 5px 0 5px;"
             data-toggle="tooltip" [title]="item.wow_class"
         />
         <a href="#" 
-            [style]="{'text-decoration': 'none', 'color': classColor(item.wow_class)}"
+            [style]="{'text-decoration': 'none', 'color': item.wow_class | classColor }"
             [routerLink]="['/character', item.region, item.realm, item.name]" 
         >
             <h6><strong>{{ item.name | titlecase }}-{{ item.realm | titlecase}}</strong></h6>

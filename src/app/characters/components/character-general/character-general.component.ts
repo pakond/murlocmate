@@ -1,10 +1,9 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as moment from 'moment';
 
 import { Character } from '../../interfaces/characters.interfaces';
 import { CharactersService } from '../../services/characters.service';
-// import { SharedService } from '../../../shared/services/shared.service';
+import { SharedService } from '../../../shared/services/shared.service';
 
 
 @Component({
@@ -12,21 +11,44 @@ import { CharactersService } from '../../services/characters.service';
   templateUrl: './character-general.component.html',
   styleUrls: ['./character-general.component.scss']
 })
-export class CharacterGeneralComponent implements OnChanges {
+export class CharacterGeneralComponent implements OnChanges, OnInit {
 
-  tiempo: string = '';
+  tiempo: string = ''
+  interval: any;
+  update: boolean = false;
 
   @Input() character!: Character
 
   constructor(
     private charactersService: CharactersService, 
-    // private sharedService: SharedService,
+    private sharedService: SharedService,
     private router: Router,
     ) { }
 
+  ngOnInit() {
+  }
+  
   ngOnChanges() {
-    // this.tiempo = this.sharedService.calculaTiempo(new Date(this.character.last_update), new Date())
-    this.tiempo = moment(this.character.last_update).fromNow();
+    this.updateButton();
+    clearInterval(this.interval);
+    this.utcTime();
+  }
+
+  utcTime(): void {
+    let fecha = new Date(this.character.last_update);
+    this.interval = setInterval(() => {
+      const fechaActual = new Date()
+      this.tiempo = this.sharedService.calculaTiempo2(fecha, fechaActual);
+      this.updateButton()
+    }, 1000);
+  }
+
+  updateButton() {
+    const old = new Date(this.character.last_update);
+    const diff = Date.now() - Date.parse(old.toString());
+    if (diff >= 60000) {
+      this.update = true;
+    }
   }
 
   updateCharacter() {

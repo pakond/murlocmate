@@ -11,39 +11,86 @@ import { environment } from '../../../../environments/environment';
 export class CharacterAchievementsComponent implements OnChanges {
 
   achievements2v: CharacterAchievement[] = [];
+  imgAchievements2v: string = '';
+  tooltipAchievements2v: string = '';
   achievements3v: CharacterAchievement[] = [];
+  imgAchievements3v: string = '';
+  tooltipAchievements3v: string = ''
   achievementsRbg: CharacterAchievement[] = [];
+  imgAchievementsRbg: string = '';
+  tooltipAchievementsRbg: string = ''
   achievementsRank: CharacterAchievement[] = [];
+  imgAchievementsRank: string = '';
+  tooltipAchievementsRank: string = ''
 
   @Input() character!: Character;
 
   constructor() { }
 
   ngOnChanges() {
+    this.achievements2v = [];
+    this.imgAchievements2v = '';
+    this.tooltipAchievements2v = '';
+
+    this.achievements3v = [];
+    this.imgAchievements3v = '';
+    this.tooltipAchievements3v = '';
+
+    this.achievementsRbg = [];
+    this.imgAchievementsRbg = '';
+    this.tooltipAchievementsRbg = '';
+
+    this.achievementsRank = [];
+    this.imgAchievementsRank = '';
+    this.tooltipAchievementsRank = '';
+
     this.processAchievements();
   }
 
   processAchievements(): void {
     // 2v2
-    this.achievements2v = [];
-    const achieves2v = [399,400,401,1159]
+    const achieves2v = [399,400,401,1159];
     achieves2v.forEach(numacv => {
       const achieve = this.character.achievements.filter(item => item.aid === numacv)[0];
       if (achieve) {
-        this.achievements2v.push(achieve)
+        this.achievements2v.push(achieve);
       }
     })
+    if (this.achievements2v.length > 0) {
+      this.imgAchievements2v = environment.staticImg + '/achievement/' + this.achievements2v[this.achievements2v.length-1].aid + '.png';
+      this.achievements2v.forEach((achv) => {
+        let date: any = achv.date_completed;
+        date = date.split('T');
+        date = date[0];
+        let name: any = achv.name;
+        name = name.split(':');
+        name = name[1];
+        this.tooltipAchievements2v += `${name}: ${date}\n`;
+      })
+    }
+
     // 3v3
-    this.achievements3v = [];
-    const achieves3v = [402,403,405,1160,5266,5267]
+    const achieves3v = [402,403,405,1160,5266,5267];
     achieves3v.forEach(numacv => {
       const achieve = this.character.achievements.filter(item => item.aid === numacv)[0];
       if (achieve) {
-        this.achievements3v.push(achieve)
+        this.achievements3v.push(achieve);
       }
     })
+    if (this.achievements3v.length > 0) {
+      this.imgAchievements3v = environment.staticImg + '/achievement/' + this.achievements3v[this.achievements3v.length-1].aid + '.png';
+      this.achievements3v.forEach((achv) => {
+        let date: any = achv.date_completed;
+        date = date.split('T');
+        date = date[0];
+        let name: any = achv.name;
+        name = name.split(':');
+        name = name[1];
+        this.tooltipAchievements3v += `${name}: ${date}\n`;
+      })
+    }
+
     // rbg
-    this.achievementsRbg = [];
     let achievesRbg: number[];
     if (this.character.faction.name == 'Alliance') {
       achievesRbg = [5330,5331,5332,5333,5334,5335,5336,5337,5359,5339,5340,5341,5357,5343];
@@ -54,90 +101,36 @@ export class CharacterAchievementsComponent implements OnChanges {
     achievesRbg.forEach(numacv => {
       const achieve = this.character.achievements.filter(item => item.aid === numacv)[0];
       if (achieve) {
-        this.achievementsRbg.push(achieve)
+        this.achievementsRbg.push(achieve);
       }
     })
+    if (this.achievementsRbg.length > 0) {
+      this.imgAchievementsRbg = environment.staticImg + '/achievement/' + this.achievementsRbg[this.achievementsRbg.length-1].aid + '.png';
+      this.achievementsRbg.forEach((achv) => {
+        let date: any = achv.date_completed;
+        date = date.split('T');
+        date = date[0] ;
+        this.tooltipAchievementsRbg += `${achv.name}: ${date}\n`;
+      })
+    }
+
     // ranks
-    this.achievementsRank = [];
-    const achievesRank = [2090,2093,2092,2091]
+    const achievesRank = [2090,2093,2092,2091];
     achievesRank.forEach(numacv => {
       const achieve = this.character.achievements.filter(item => item.aid === numacv)[0];
       if (achieve) {
-        this.achievementsRank.push(achieve)
+        this.achievementsRank.push(achieve);
       }
     })
-  }
-
-  getAchievement(bracket: string): string | void {
-    if (bracket === '2v') {
-      return environment.staticImg + '/achievement/' + this.achievements2v[this.achievements2v.length-1].aid + '.png'
-    }
-    if (bracket === '3v') {
-      return environment.staticImg + '/achievement/' + this.achievements3v[this.achievements3v.length-1].aid + '.png'
-    }
-    if (bracket === 'rbg') {
-      return environment.staticImg + '/achievement/' + this.achievementsRbg[this.achievementsRbg.length-1].aid + '.png'
-    }
-    if (bracket === 'rank') {
-      return environment.staticImg + '/achievement/' + this.achievementsRank[this.achievementsRank.length-1].aid + '.png'
-    }
-  }
-
-  tooltipHtml(bracket: string): string {
-
-    let html: string = '';
-
-    if (bracket === '2v2' && this.achievements2v.length > 0) {
-      this.achievements2v.forEach((achv) => {
-
-        let date: any = achv.date_completed
-        date = date.split('T')
-        date = date[0]
-
-        let name: any = achv.name
-        name = name.split(':')
-        name = name[1]
-
-        html += `${name}: ${date}\n`
-      })
-    }
-    if (bracket === '3v3' && this.achievements3v.length > 0) {
-      this.achievements3v.forEach((achv) => {
-
-        let date: any = achv.date_completed
-        date = date.split('T')
-        date = date[0]
-
-        let name: any = achv.name
-        name = name.split(':')
-        name = name[1]
-
-        html += `${name}: ${date}\n`
-      })
-    }
-    if (bracket === 'rbg' && this.achievementsRbg.length > 0) {
-      this.achievementsRbg.forEach((achv) => {
-
-        let date: any = achv.date_completed
-        date = date.split('T')
-        date = date[0] 
-
-        html += `${achv.name}: ${date}\n`
-      })
-    }
-    if (bracket === 'rank' && this.achievementsRank.length > 0) {
+    if (this.achievementsRank.length > 0) {
+      this.imgAchievementsRank = environment.staticImg + '/achievement/' + this.achievementsRank[this.achievementsRank.length-1].aid + '.png';
       this.achievementsRank.forEach((achv) => {
-
-        let date: any = achv.date_completed
-        date = date.split('T')
-        date = date[0] 
-
-        html += `${achv.name}: ${date}\n`
+        let date: any = achv.date_completed;
+        date = date.split('T');
+        date = date[0] ;
+        this.tooltipAchievementsRank += `${achv.name}: ${date}\n`;
       })
     }
-
-    return html
-
   }
 
 }

@@ -120,3 +120,19 @@ export interface CharacterAchievement {
     aid: number;
     description: string;
 }
+
+export interface SeasonReward {
+    achievement: Achievement;
+    region: Region;
+    bracket: Bracket;
+    faction: Faction;
+    cutoff: number;
+}
+
+export interface Season {
+    sid: number;
+    season_start_timestamp: Date;
+    season_end_timestamp: Date;
+    rewards: SeasonReward[];
+    is_active: boolean;
+}

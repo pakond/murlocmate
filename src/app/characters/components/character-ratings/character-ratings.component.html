@@ -1,22 +1,22 @@
 <div 
     class="row mt-2 justify-content-center text-center"
-    *ngIf="character.ratings"
     >
     <div 
         class="col-md-3 rounded m-1" 
         style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
+        *ngIf="rating2v2"
     >
         <span style="text-decoration: underline;">2v2 Rating</span>
         <div class="row">
             <div class="col">
-                <h1 style="color: purple">{{ character.ratings[0]?.rating }}</h1>
+                <h1 style="color: purple">{{ rating2v2.rating }}</h1>
             </div>
             <div class="col">
-                <span style="color: green;">{{ character.ratings[0]?.won }}</span>
+                <span style="color: green;">{{ rating2v2.won }}</span>
                 /
-                <span style="color: red;">{{ character.ratings[0]?.lost }}</span>
+                <span style="color: red;">{{ rating2v2.lost }}</span>
                 <br>
-                <small>{{ character.ratings[0]?.winratio }}% win ratio</small>
+                <small>{{ rating2v2.winratio }}% win ratio</small>
             </div>
         </div>    
         <span style="color: yellow;"><small>Highest {{ character.max_2v2_rating }}</small></span>
@@ -24,18 +24,19 @@
     <div 
         class="col-md-3 rounded m-1" 
         style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
+        *ngIf="rating3v3"
     >
         <span style="text-decoration: underline;">3v3 Rating</span>
         <div class="row">
             <div class="col">
-                <h1 style="color: orangered">{{ character.ratings[1]?.rating }}</h1>
+                <h1 style="color: orangered">{{ rating3v3.rating }}</h1>
             </div>
             <div class="col">
-                <span style="color: green;">{{ character.ratings[1]?.won }}</span>
+                <span style="color: green;">{{ rating3v3.won }}</span>
                 /
-                <span style="color: red;">{{ character.ratings[1]?.lost }}</span>
+                <span style="color: red;">{{ rating3v3.lost }}</span>
                 <br>
-                <small>{{ character.ratings[1]?.winratio }}% win ratio</small>
+                <small>{{ rating3v3.winratio }}% win ratio</small>
             </div>
         </div>    
         <span style="color: yellow;"><small>Highest {{ character.max_3v3_rating }}</small></span>
@@ -43,18 +44,19 @@
     <div 
         class="col-md-3 rounded m-1" 
         style="background-color: rgba(33, 37, 41, 0.4); padding: 10px;"
+        *ngIf="ratingRbg"
     >
         <span style="text-decoration: underline;">RBG Rating</span>
         <div class="row">
             <div class="col">
-                <h1 style="color: blue">{{ character.ratings[2]?.rating }}</h1>
+                <h1 style="color: blue">{{ ratingRbg.rating }}</h1>
             </div>
             <div class="col">
-                <span style="color: green;">{{ character.ratings[2]?.won }}</span>
+                <span style="color: green;">{{ ratingRbg.won }}</span>
                 /
-                <span style="color: red;">{{ character.ratings[2]?.lost }}</span>
+                <span style="color: red;">{{ ratingRbg.lost }}</span>
                 <br>
-                <small>{{ character.ratings[2]?.winratio }}% win ratio</small>
+                <small>{{ ratingRbg.winratio }}% win ratio</small>
             </div>
         </div>    
         <span style="color: yellow;"><small>Highest {{ character.max_rbg_rating }}</small></span>

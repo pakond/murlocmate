@@ -50,4 +50,5 @@ export class CharactersService {
 
     return this.http.get<Realm>(url, { headers });
   }
+
 }

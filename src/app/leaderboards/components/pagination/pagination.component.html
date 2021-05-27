@@ -19,7 +19,7 @@
         <!-- 3 ANTERIORES -->
         <li 
             style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="(x+1 === currentPage - 3 || x+1 === currentPage - 2 || x+1 === currentPage - 1) && currentPage > 4; else elseAnteriores;"
+            *ngIf="x >= currentPage - 4 && x <= currentPage - 2 && currentPage > 4; else elseAnteriores;"
             (click)="pagination(x+1)"
         >
             {{ x+1 }}
@@ -27,14 +27,14 @@
         <ng-template #elseAnteriores>
             <li 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x+1 === currentPage - 3"
+                *ngIf="x === currentPage - 4"
                 (click)="pagination(x+2)"
             >
                 {{ x+2 }}
             </li>
             <li 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x+1 === currentPage - 2"
+                *ngIf="x === currentPage - 3"
                 (click)="pagination(x+2)"
             >
                 {{ x+2 }}
@@ -43,7 +43,7 @@
         <!-- 3 SIGUIENTES -->
         <li 
             style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="(x+1 === currentPage + 3 || x+1 === currentPage + 2 || x+1 === currentPage + 1) && (currentPage + 3) < numeroPaginas; else elseSiguientes;"
+            *ngIf="x <= currentPage + 2 && x >= currentPage && (currentPage + 3) < numeroPaginas; else elseSiguientes;"
             (click)="pagination(x+1)"
         >
             {{ x + 1 }}
@@ -51,14 +51,14 @@
         <ng-template #elseSiguientes>
             <li 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x+1 === currentPage + 3"
+                *ngIf="x === currentPage + 2"
                 (click)="pagination(x)"
             >
                 {{ x }}
             </li>
             <li 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x+1 === currentPage + 2"
+                *ngIf="x === currentPage + 1"
                 (click)="pagination(x)"
             >
                 {{ x }}

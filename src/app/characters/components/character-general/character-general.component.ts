@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Character } from '../../interfaces/characters.interfaces';
 import { CharactersService } from '../../services/characters.service';
 import { SharedService } from '../../../shared/services/shared.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -23,9 +24,11 @@ export class CharacterGeneralComponent implements OnChanges, OnInit {
     private charactersService: CharactersService, 
     private sharedService: SharedService,
     private router: Router,
+    private spinner: NgxSpinnerService
     ) { }
 
   ngOnInit() {
+    this.updateButton();
   }
   
   ngOnChanges() {
@@ -52,13 +55,17 @@ export class CharacterGeneralComponent implements OnChanges, OnInit {
   }
 
   updateCharacter() {
+    this.spinner.show()
     this.charactersService.postCharacter(this.character.name, this.character.realm.slug!, this.character.region.name)
       .subscribe(
         resp => {
           this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
           this.router.navigateByUrl(`/character/${this.character.region.name}/${this.character.realm.slug}/${this.character.name}`));
+          this.spinner.hide()
         },
-        err => console.log(err)
-      );
+        err => {
+          console.log(err)
+          this.spinner.hide()
+        });
   }
 }

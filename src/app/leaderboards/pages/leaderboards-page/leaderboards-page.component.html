@@ -1,8 +1,9 @@
+<ngx-spinner [fullScreen]="false" bdColor="rgba(0, 0, 0, 0.4)"></ngx-spinner>
 <div 
     *ngIf="leaderboard" 
-    class="row p-3" 
+    class="row p-3 justify-content-center" 
     [style]="{
-        'background-image': 'url(../assets/fondo.jpg)',
+        'background-image': 'url(../assets/fondo2.jpg)',
         'background-repeat': 'no-repeat',
         'background-position': 'center',
         'background-attachment': 'fixed',
@@ -10,28 +11,45 @@
         'background-color': '#212529',
         'color': 'white'
     }"
->   
-    <div 
-        class="col p-2 text-center bracket" 
-        routerLink="/leaderboards/2v2" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
-    >
-        <strong>2v2</strong>
+> 
+    <div class="row" style="width: 80%;">
+        <div
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === '2v2'}"
+            (click)="changeBracket('2v2')"
+        >
+            <strong>2v2</strong>
+        </div>
+        <div 
+            class="col p-2 text-center mid-bracket"
+            [ngClass]="{'active-bracket': bracket === '3v3'}"
+            (click)="changeBracket('3v3')"
+        >
+            <strong>3v3</strong>
+        </div>
+        <div 
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === 'rbg'}"
+            (click)="changeBracket('rbg')"
+        >
+            <strong>RBG</strong>
+        </div>
     </div>
-    <div 
-        class="col p-2 text-center mid-bracket" 
-        routerLink="/leaderboards/3v3" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
-    >
-        <strong>3v3</strong>
+    <div class="row p-4" style="background-color: rgba(0, 0, 0, 0.4); width: 85%;">
+        <div class="col mt-4">
+            <app-pagination 
+                [bracket]="bracket"
+                [leaderboard]="leaderboard"
+                [numeroPaginas]="numeroPaginas"
+                [currentPage]="currentPage"
+                [region]="region"
+                (newLeaderboardEvent)="paginate($event)"
+                (newCurrentPageEvent)="page($event)"
+            >
+            </app-pagination>
+        </div>
+        <div class="col">
+        </div>
     </div>
-    <div 
-        class="col p-2 text-center bracket" 
-        routerLink="/leaderboards/rbg" routerLinkActive="active-bracket" [routerLinkActiveOptions]="{exact: true}"
-    >
-        <strong>RBG</strong>
-    </div>
-    <ul *ngIf="leaderboard">
-        <li *ngFor="let item of leaderboard.results">
-            {{ item.character.name }} - {{ item.rating }}
-        </li>
-    </ul>
+    <app-table [leaderboard]="leaderboard" class="row" style="background-color: rgba(0, 0, 0, 0.4); width: 85%;"></app-table>
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { CharacterDetailPageComponent } from './pages/character-detail-page/character-detail-page.component';
 import { InputSearchComponent } from './components/input-search/input-search.component';
@@ -29,6 +30,7 @@ import { PipesModule } from '../shared/pipes/pipes.module';
     FormsModule,
     HttpClientModule,
     RouterModule,
+    NgxSpinnerModule,
     PipesModule
   ],
   exports: [

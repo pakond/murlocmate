@@ -12,6 +12,8 @@ export class LeaderboardsService {
 
   getLeaderboard(bracket: string, season: number, region: string, page: number) {
 
+    const headers = new HttpHeaders().set('X-Api-Key', environment.apiKey)
+
     let bracketId: string;
     if (bracket === '2v2') { bracketId = 'ARENA_2v2' }
     if (bracket === '3v3') { bracketId = 'ARENA_3v3' }
@@ -19,10 +21,11 @@ export class LeaderboardsService {
 
     const url = `${environment.apiUrl}/pvp-entry/`;
     const params = new HttpParams()
+      .set('page', page)
       .set('bracket__pvp_type', bracketId!)
       .set('season__sid',  season)
       .set('region__name', region)
-    const headers = new HttpHeaders().set('X-Api-Key', environment.apiKey)
+    
 
     return this.http.get<LeaderResult>(url, { params, headers });
   }

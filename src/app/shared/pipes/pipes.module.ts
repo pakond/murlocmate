@@ -5,13 +5,17 @@ import { ClassColorPipe } from './pipes/class-color.pipe';
 import { RegionIconPipe } from './pipes/region-icon.pipe';
 import { ClassIconPipe } from './pipes/class-icon.pipe';
 import { FactionIconPipe } from './pipes/faction-icon.pipe';
+import { RaceIconPipe } from './pipes/race-icon.pipe';
+import { SpecIconPipe } from './pipes/spec-icon.pipe';
 
 @NgModule({
   declarations: [
     ClassColorPipe,
     RegionIconPipe,
     ClassIconPipe,
-    FactionIconPipe
+    FactionIconPipe,
+    RaceIconPipe,
+    SpecIconPipe,
   ],
   imports: [
     CommonModule
@@ -20,7 +24,9 @@ import { FactionIconPipe } from './pipes/faction-icon.pipe';
     ClassColorPipe,
     RegionIconPipe,
     ClassIconPipe,
-    FactionIconPipe
+    FactionIconPipe,
+    RaceIconPipe,
+    SpecIconPipe
   ]
 })
 export class PipesModule { }

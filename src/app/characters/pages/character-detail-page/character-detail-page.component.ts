@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CharactersService } from '../../services/characters.service';
 import { Character } from '../../interfaces/characters.interfaces';
 import { SharedService } from '../../../shared/services/shared.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-character-detail-page',
@@ -22,7 +22,8 @@ export class CharacterDetailPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private charactersService: CharactersService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private spinner: NgxSpinnerService
   ) {
 
   }
@@ -34,36 +35,48 @@ export class CharacterDetailPageComponent implements OnInit {
       this.realm = params['realm'];
       this.region = params['region'];
 
+      this.spinner.show();
       this.charactersService.getCharacter(this.name, this.realm, this.region)
       .subscribe(
         resp => {
           this.character = resp;
           this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
           this.exists = true;
+          this.spinner.hide();
           this.charactersService.getRealm(this.character.realm.id).subscribe(
             resp => { 
               this.character.realm = resp
             });
         },
         err => {
+          this.spinner.show()
           this.charactersService.postCharacter(this.name, this.realm, this.region)
             .subscribe(
               resp => {
+                this.spinner.hide();
+                this.spinner.show();
                 this.charactersService.getCharacter(this.name, this.realm, this.region)
                   .subscribe(
                     resp => { 
                       this.character = resp;
                       this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
                       this.exists = true;
+                      this.spinner.hide();
                       this.charactersService.getRealm(this.character.realm.id).subscribe(
                         resp => { 
-                          this.character.realm = resp
+                          this.character.realm = resp;
                         });
                     },
-                    (err) => this.exists = false
+                    (err) => { 
+                      this.exists = false;
+                      this.spinner.hide();
+                    }
                   )
               },
-              (err) => this.exists = false
+              (err) => {
+                this.exists = false;
+                this.spinner.hide();
+              }
             )
         }
       );

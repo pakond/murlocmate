@@ -6,6 +6,10 @@ export interface SearchCharacters {
     region: string;
     faction: string;
     wow_class: string;
+    guild: string;
+    gender: string;
+    spec: string;
+    race: string;
     max_3v3_rating: number;
     max_2v2_rating: number;
 }

@@ -1,76 +1,81 @@
-<ul>
-    <div *ngFor="let dummy of ' '.repeat(numeroPaginas).split(''), let x = index" style="display: inline;">
-        <!-- PRIMERA -->
-        <li 
-            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="x === 0 && (x+1) !== currentPage"
-            (click)="pagination(x+1)"
-        >
-            {{ x + 1 }}
-        </li>
-        <!-- PAGINA ACTUAL -->
-        <li 
-            style="display: inline; background-color: rgba(3, 105, 34, 0.6); margin: 5px; padding: 5px 10px 5px 10px; cursor: not-allowed;"
-            *ngIf="x+1 === currentPage"
-            (click)="pagination(x+1)"
-        >
-            {{ x + 1 }}
-        </li>
-        <!-- 3 ANTERIORES -->
-        <li 
-            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="x >= currentPage - 4 && x <= currentPage - 2 && currentPage > 4; else elseAnteriores;"
-            (click)="pagination(x+1)"
-        >
-            {{ x+1 }}
-        </li>
-        <ng-template #elseAnteriores>
-            <li 
+<div 
+    class="row p-4" 
+    style="background-color: rgba(0, 0, 0, 0.4); width: 85%; margin: auto;"
+>
+    <ul class="pagination">
+        <div *ngFor="let dummy of ' '.repeat(numeroPaginas).split(''), let x = index" style="display: inline;">
+            <!-- PRIMERA -->
+            <li class="page-item"
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x === currentPage - 4"
-                (click)="pagination(x+2)"
+                *ngIf="x === 0 && (x+1) !== currentPage"
+                (click)="pagination(x+1)"
             >
-                {{ x+2 }}
+                {{ x + 1 }}
             </li>
+            <!-- PAGINA ACTUAL -->
             <li 
-                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x === currentPage - 3"
-                (click)="pagination(x+2)"
+                style="display: inline; background-color: rgba(3, 105, 34, 0.6); margin: 5px; padding: 5px 10px 5px 10px; cursor: not-allowed;"
+                *ngIf="x+1 === currentPage"
+                (click)="pagination(x+1)"
             >
-                {{ x+2 }}
+                {{ x + 1 }}
             </li>
-        </ng-template>
-        <!-- 3 SIGUIENTES -->
-        <li 
-            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="x <= currentPage + 2 && x >= currentPage && (currentPage + 3) < numeroPaginas; else elseSiguientes;"
-            (click)="pagination(x+1)"
-        >
-            {{ x + 1 }}
-        </li>
-        <ng-template #elseSiguientes>
-            <li 
+            <!-- 3 ANTERIORES -->
+            <li class="page-item" 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x === currentPage + 2"
-                (click)="pagination(x)"
+                *ngIf="x >= currentPage - 4 && x <= currentPage - 2 && currentPage > 4; else elseAnteriores;"
+                (click)="pagination(x+1)"
             >
-                {{ x }}
+                {{ x+1 }}
             </li>
-            <li 
+            <ng-template #elseAnteriores>
+                <li class="page-item" 
+                    style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                    *ngIf="x === currentPage - 4"
+                    (click)="pagination(x+2)"
+                >
+                    {{ x+2 }}
+                </li>
+                <li class="page-item" 
+                    style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                    *ngIf="x === currentPage - 3"
+                    (click)="pagination(x+2)"
+                >
+                    {{ x+2 }}
+                </li>
+            </ng-template>
+            <!-- 3 SIGUIENTES -->
+            <li class="page-item" 
                 style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-                *ngIf="x === currentPage + 1"
-                (click)="pagination(x)"
+                *ngIf="x <= currentPage + 2 && x >= currentPage && (currentPage + 3) < numeroPaginas; else elseSiguientes;"
+                (click)="pagination(x+1)"
             >
-                {{ x }}
+                {{ x + 1 }}
             </li>
-        </ng-template>
-        <!-- ULTIMA -->
-        <li 
-            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
-            *ngIf="x+1 === numeroPaginas && x+1 !== currentPage"
-            (click)="pagination(x+1)"
-        >
-            {{ x + 1 }}
-        </li>
-    </div>
-</ul>
+            <ng-template #elseSiguientes>
+                <li class="page-item" 
+                    style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                    *ngIf="x === currentPage + 2"
+                    (click)="pagination(x)"
+                >
+                    {{ x }}
+                </li>
+                <li class="page-item" 
+                    style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                    *ngIf="x === currentPage + 1"
+                    (click)="pagination(x)"
+                >
+                    {{ x }}
+                </li>
+            </ng-template>
+            <!-- ULTIMA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x+1 === numeroPaginas && x+1 !== currentPage"
+                (click)="pagination(x+1)"
+            >
+                {{ x + 1 }}
+            </li>
+        </div>
+    </ul>
+</div>

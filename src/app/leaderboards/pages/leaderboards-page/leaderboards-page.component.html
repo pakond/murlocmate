@@ -35,21 +35,25 @@
             <strong>RBG</strong>
         </div>
     </div>
-    <div class="row p-4" style="background-color: rgba(0, 0, 0, 0.4); width: 85%;">
-        <div class="col mt-4">
-            <app-pagination 
-                [bracket]="bracket"
-                [leaderboard]="leaderboard"
-                [numeroPaginas]="numeroPaginas"
-                [currentPage]="currentPage"
-                [region]="region"
-                (newLeaderboardEvent)="paginate($event)"
-                (newCurrentPageEvent)="page($event)"
-            >
-            </app-pagination>
-        </div>
-        <div class="col">
-        </div>
-    </div>
-    <app-table [leaderboard]="leaderboard" class="row" style="background-color: rgba(0, 0, 0, 0.4); width: 85%;"></app-table>
+    <app-pagination 
+        [bracket]="bracket"
+        [leaderboard]="leaderboard"
+        [numeroPaginas]="numeroPaginas"
+        [currentPage]="currentPage"
+        [region]="region"
+        (newLeaderboardEvent)="paginate($event)"
+        (newCurrentPageEvent)="page($event)"
+    >
+    </app-pagination>
+    <app-table [leaderboard]="leaderboard"></app-table>
+    <app-pagination
+        [bracket]="bracket"
+        [leaderboard]="leaderboard"
+        [numeroPaginas]="numeroPaginas"
+        [currentPage]="currentPage"
+        [region]="region"
+        (newLeaderboardEvent)="paginate($event)"
+        (newCurrentPageEvent)="page($event)"
+    >
+    </app-pagination>
 </div>

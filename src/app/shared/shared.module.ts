@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CharactersModule } from '../characters/characters.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    SizeDetectorComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CharactersModule
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    SizeDetectorComponent
   ]
 })
 export class SharedModule { }

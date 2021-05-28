@@ -1,65 +1,125 @@
-<table>
-    <tr style="border-bottom: 1px solid white;">
-        <th>
-            RANK
-        </th>
-        <th>
-            DETAILS
-        </th>
-        <th>
-            NAME
-        </th>
-        <th>
-            GUILD
-        </th>
-        <th>
-            REALM
-        </th>
-        <th>
-            WON/LOST
-        </th>
-        <th>
-            RATING
-        </th>
-    </tr>
-    <tr *ngFor="let item of leaderboard.results; let i = index" [class.row-oscura] = "i % 2 === 0">
-        <th>
-            #{{ item.rank }}
-        </th>
-        <th>    
-            <img 
-                [src]="item.character.race | raceIcon: item.character.gender"
-                [alt]="item.character.race"
-                style="width: 25px; margin: 3px;"
-            >
-            <img 
-                [src]="item.character.wow_class | classIcon"
-                [alt]="item.character.wow_class"
-                style="width: 25px; margin: 3px;"
-            >
-            <img 
-                [src]="item.character.spec | specIcon: item.character.wow_class"
-                [alt]="item.character.spec"
-                style="width: 25px; margin: 3px;"
-            >
-        </th>
-        <th [routerLink]="'/character/' + item.character.region + '/' + item.character.realm + '/' + item.character.name" style="cursor: pointer;">
-            <span [style]="{ 'color': item.character.wow_class | classColor }">{{ item.character.name | titlecase }}</span>
-        </th>
-        <th>
-            <span style="color: rgb(3, 148, 3);" *ngIf="item.character.guild"><small><{{ item.character.guild }}></small></span>
-        </th>
-        <th>
-            <span style="color: #e93a3a;" *ngIf="item.character.faction === 'Horde'; else realmElse">{{ item.character.realm | titlecase}}</span>
-            <ng-template #realmElse>
-                <span style="color: #4accff;">{{ item.character.realm | titlecase }}</span>
-            </ng-template>
-        </th>
-        <th>
-            <span style="color: green">{{ item.won }}</span> / <span style="color: red">{{ item.lost }}</span> <span style="color: grey"><small> {{ item.winratio }}%</small></span>
-        </th>
-        <th>
-            {{ item.rating }}
-        </th>
-    </tr>
-</table>
+<div 
+    class="row p-2" 
+    style="background-color: rgba(0, 0, 0, 0.4); width: 85%; margin: auto;"
+    *ngIf="smallScreen === false"
+>
+    <table>
+        <tr style="border-bottom: 1px solid white;">
+            <th>
+                RANK
+            </th>
+            <th>
+                DETAILS
+            </th>
+            <th>
+                NAME
+            </th>
+            <th>
+                GUILD
+            </th>
+            <th>
+                REALM
+            </th>
+            <th>
+                WON/LOST
+            </th>
+            <th>
+                RATING
+            </th>
+        </tr>
+        <tr *ngFor="let item of leaderboard.results; let i = index" [class.row-oscura] = "i % 2 === 0">
+            <th>
+                #{{ item.rank }}
+            </th>
+            <th>    
+                <img 
+                    [src]="item.character.race | raceIcon: item.character.gender"
+                    [alt]="item.character.race"
+                    style="width: 25px; margin: 3px;"
+                >
+                <img 
+                    [src]="item.character.wow_class | classIcon"
+                    [alt]="item.character.wow_class"
+                    style="width: 25px; margin: 3px;"
+                >
+                <img 
+                    [src]="item.character.spec | specIcon: item.character.wow_class"
+                    [alt]="item.character.spec"
+                    style="width: 25px; margin: 3px;"
+                >
+            </th>
+            <th [routerLink]="'/character/' + item.character.region + '/' + item.character.realm + '/' + item.character.name" style="cursor: pointer;">
+                <span [style]="{ 'color': item.character.wow_class | classColor }">{{ item.character.name | titlecase }}</span>
+            </th>
+            <th>
+                <span style="color: rgb(3, 148, 3);" *ngIf="item.character.guild"><small><{{ item.character.guild }}></small></span>
+            </th>
+            <th>
+                <span style="color: #e93a3a;" *ngIf="item.character.faction === 'Horde'; else realmElse">{{ item.character.realm | titlecase}}</span>
+                <ng-template #realmElse>
+                    <span style="color: #4accff;">{{ item.character.realm | titlecase }}</span>
+                </ng-template>
+            </th>
+            <th>
+                <span style="color: green">{{ item.won }}</span> / <span style="color: red">{{ item.lost }}</span> <span style="color: grey"><small> {{ item.winratio }}%</small></span>
+            </th>
+            <th>
+                {{ item.rating }}
+            </th>
+        </tr>
+    </table>
+</div>
+<div 
+    class="row p-2 text-center" 
+    style="background-color: rgba(0, 0, 0, 0.4);"
+    *ngIf="smallScreen === true"
+>
+    <table>
+        <tr style="border-bottom: 1px solid white;">
+            <th>
+                RANK
+            </th>
+            <th>
+                DETAILS
+            </th>
+            <th>
+                NAME
+            </th>
+            <th>
+                REALM
+            </th>
+            <th>
+                RATING
+            </th>
+        </tr>
+        <tr *ngFor="let item of leaderboard.results; let i = index" [class.row-oscura] = "i % 2 === 0">
+            <th>
+                #{{ item.rank }}
+            </th>
+            <th>    
+                <img 
+                    [src]="item.character.wow_class | classIcon"
+                    [alt]="item.character.wow_class"
+                    style="width: 25px; margin: 3px;"
+                >
+                <img 
+                    [src]="item.character.spec | specIcon: item.character.wow_class"
+                    [alt]="item.character.spec"
+                    style="width: 25px; margin: 3px;"
+                >
+            </th>
+            <th [routerLink]="'/character/' + item.character.region + '/' + item.character.realm + '/' + item.character.name" style="cursor: pointer;">
+                <span [style]="{ 'color': item.character.wow_class | classColor }">{{ item.character.name | titlecase }}</span>
+            </th>
+            <th>
+                <span style="color: #e93a3a;" *ngIf="item.character.faction === 'Horde'; else realmElse">{{ item.character.realm | titlecase}}</span>
+                <ng-template #realmElse>
+                    <span style="color: #4accff;">{{ item.character.realm | titlecase }}</span>
+                </ng-template>
+            </th>
+            <th>
+                {{ item.rating }}
+            </th>
+        </tr>
+    </table>
+</div>

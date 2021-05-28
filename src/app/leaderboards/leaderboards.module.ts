@@ -9,7 +9,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { TableComponent } from './components/table/table.component';
 
-
 @NgModule({
   declarations: [
     LeaderboardsPageComponent,

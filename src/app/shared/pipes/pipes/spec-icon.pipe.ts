@@ -17,6 +17,10 @@ export class SpecIconPipe implements PipeTransform {
       return this.sharedService.specs.filter(spec => spec.id === 4)[0].icon || '';
     } else if (args[0] === 'Priest' && value === 'Holy') {
       return this.sharedService.specs.filter(spec => spec.id === 21)[0].icon || '';
+    } else if (args[0] === 'Death Knight' && value === 'Frost') {
+      return this.sharedService.specs.filter(spec => spec.id === 15)[0].icon || '';
+    } else if (args[0] === 'Mage' && value === 'Frost') {
+      return this.sharedService.specs.filter(spec => spec.id === 3)[0].icon || '';
     } 
     return this.sharedService.specs.filter(spec => spec.name === value)[0].icon || '';
   }

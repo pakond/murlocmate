@@ -16,8 +16,7 @@ export class LeaderboardsPageComponent implements OnInit {
   bracket: string = '';
   region: string = 'eu';
   leaderboard!: LeaderResult;
-  numeroPaginas: number = 0;
-  currentPage: number = 1;
+  url: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -31,10 +30,16 @@ export class LeaderboardsPageComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.bracket = params['bracket'];
       if (this.bracket !== '2v2' && this.bracket !== '3v3' && this.bracket !== 'rbg') { this.bracket = '3v3' }
-      this.leaderboardsService.getLeaderboard(this.bracket, environment.currentSeason, this.region, this.currentPage)
+      this.url = environment.apiUrl 
+        + '/pvp-entry-' + this.bracket
+        + '/?season__sid=' + environment.currentSeason
+        + '&region__name=' + this.region
+        + '&page=1'
+        + '&ordering=rank'
+      ;
+      this.leaderboardsService.getLeaderboard(this.url)
         .subscribe(resp => {
           this.leaderboard = resp;
-          this.numeroPaginas = Math.ceil(this.leaderboard.count / 100)
           this.spinner.hide();
         })
     })
@@ -43,18 +48,21 @@ export class LeaderboardsPageComponent implements OnInit {
 
   refreshLeaderboard(event: any): void {
     this.leaderboard = event.leaderboard;
-    this.numeroPaginas = Math.ceil(this.leaderboard.count / 100)
-    this.currentPage = event.page;
+    this.url = event.url;
   }
 
   changeBracket(value: string) {
     this.spinner.show();
-    this.currentPage = 1;
-    this.leaderboardsService.getLeaderboard(value, environment.currentSeason, this.region, this.currentPage)
+    this.url = environment.apiUrl 
+        + '/pvp-entry-' + value
+        + '/?season__sid=' + environment.currentSeason
+        + '&region__name=' + this.region
+        + '&page=1'
+        + '&ordering=rank'
+    ;
+    this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.leaderboard = resp;
-        this.numeroPaginas = Math.ceil(this.leaderboard.count / 100)
-        this.bracket = value;
         this.router.navigateByUrl(`/leaderboards/${value}`)
         this.spinner.hide();
       })

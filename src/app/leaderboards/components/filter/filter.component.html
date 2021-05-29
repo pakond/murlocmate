@@ -1,59 +1,64 @@
-
-<div class="row p-4 filter-div">
-    <div class="col">
-        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
-            <option value="Both" selected style="background-color: black;" (click)="filterFactions('Both')">Both factions</option>
-            <option value="Alliance" style="background-color: black; color: #4accff" (click)="filterFactions('Alliance')">Alliance</option>
-            <option value="Horde" style="background-color: black; color: #e93a3a;" (click)="filterFactions('Horde')">Horde</option>
-        </select>
+<form [formGroup]="filterForm">
+    <div class="row p-4 filter-div">
+        <div class="col">
+            <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+                <option value="All" selected style="background-color: black;" (click)="filter('All', '&character__faction__name=')">Both factions</option>
+                <option value="Alliance" style="background-color: black; color: #4accff" (click)="filter('Alliance', '&character__faction__name=')">Alliance</option>
+                <option value="Horde" style="background-color: black; color: #e93a3a;" (click)="filter('Horde', '&character__faction__name=')">Horde</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;" formControlName="realm" id="realm" name="realm">
+                <option value="All" selected style="background-color: black;" (click)="filter('All', '&character__realm__slug=')">All realms</option>
+                <option 
+                    *ngFor="let realm of realms"
+                    [value]="realm.slug"
+                    style="background-color: black;"
+                    (click)="filter(realm.slug, '&character__realm__slug=')"
+                >
+                    {{ realm.slug | titlecase }} ({{ realm.category }})
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+                <option value="All" selected style="background-color: black;" (click)="filterCountry('All', '&character__realm__category=')">All countries</option>
+                <option 
+                    *ngFor="let country of countries"
+                    [value]="country"
+                    style="background-color: black;"
+                    (click)="filterCountry(country, '&character__realm__category=')"
+                >
+                    {{ country | titlecase }}
+                </option>
+            </select>
+        </div>
+        <div class="col">
+            <button type="reset" class="btn btn-warning btn-sm float-end" (click)="resetFilters()">Reset filters</button>
+        </div>
     </div>
-    <div class="col">
-        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
-            <option value="all" selected style="background-color: black;">All realms</option>
-            <option 
-                *ngFor="let realm of realms"
-                [value]="realm.slug"
-                style="background-color: black;"
-            >
-                {{ realm.slug | titlecase }}
-            </option>
-        </select>
+    <div class="row p-4 filter-div">
+        <div 
+            class="col text-center"
+            *ngFor="let wowClass of clases"
+        >
+            <img
+                [id]="wowClass.name"
+                class="img-fluid class-style"  
+                [src]="wowClass.icon"
+                [alt]="wowClass.name"
+                data-toggle="tooltip" [title]="wowClass.name"
+                [style]="{ 'border': '3px solid ' + wowClass.color }"
+                (click)="filterClass(wowClass.name, '&character__wow_class__name=')"
+            />
+            <br>
+            <img
+                *ngFor="let spec of getClassSpecs(wowClass.id)"
+                [src]="spec.icon"
+                [alt]="spec.name"
+                data-toggle="tooltip" [title]="spec.name"
+                [style]="{ 'filter': 'grayscale(100%)', 'cursor': 'pointer', 'display': 'inline', 'width': '24px', 'margin-right': '1px', 'border': '1px solid ' + wowClass.color }"
+            />
+        </div>
     </div>
-    <div class="col">
-        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
-            <option value="all" selected style="background-color: black;">All countries</option>
-            <option 
-                *ngFor="let country of countries"
-                [value]="country"
-                style="background-color: black;"
-            >
-                {{ country | titlecase }}
-            </option>
-        </select>
-    </div>
-    <div class="col">
-        <button type="button" class="btn btn-warning btn-sm">Reset filters</button>
-    </div>
-</div>
-<div class="row p-4 filter-div">
-    <div 
-        class="col text-center"
-        *ngFor="let wowClass of clases"
-    >
-        <img
-            class="img-fluid"
-            [src]="wowClass.icon"
-            [alt]="wowClass.name"
-            data-toggle="tooltip" [title]="wowClass.name"
-            [style]="{ 'width': '80px','margin-bottom': '10px', 'margin-top': '10px', 'border-radius': '50%', 'border': '3px solid ' + wowClass.color }"
-        />
-        <br>
-        <img
-            *ngFor="let spec of getClassSpecs(wowClass.id)"
-            [src]="spec.icon"
-            [alt]="spec.name"
-            data-toggle="tooltip" [title]="spec.name"
-            [style]="{ 'display': 'inline', 'width': '24px', 'margin-right': '1px', 'border': '1px solid ' + wowClass.color }"
-        />
-    </div>
-</div>
+</form>

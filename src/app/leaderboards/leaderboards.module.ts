@@ -10,6 +10,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { TableComponent } from './components/table/table.component';
 import { LeaderboardsRoutingModule } from './leaderboards-routing.module';
 import { FilterComponent } from './components/filter/filter.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { FilterComponent } from './components/filter/filter.component';
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     NgxSpinnerModule,
     LeaderboardsRoutingModule,
     PipesModule

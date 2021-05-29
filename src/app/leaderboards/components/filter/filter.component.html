@@ -22,7 +22,7 @@
         </div>
         <div class="col">
             <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
-                <option value="All" selected style="background-color: black;" (click)="filterCountry('All', '&character__realm__category=')">All countries</option>
+                <option value="All" selected style="background-color: black;" (click)="filterCountry('All', '&character__realm__category=')">All categories</option>
                 <option 
                     *ngFor="let country of countries"
                     [value]="country"

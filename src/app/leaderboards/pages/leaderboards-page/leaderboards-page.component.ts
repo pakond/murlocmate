@@ -41,13 +41,10 @@ export class LeaderboardsPageComponent implements OnInit {
     
   }
 
-  refreshLeaderboard(event: LeaderResult): void {
-    this.leaderboard = event;
+  refreshLeaderboard(event: any): void {
+    this.leaderboard = event.leaderboard;
     this.numeroPaginas = Math.ceil(this.leaderboard.count / 100)
-  }
-
-  page(event: number): void {
-    this.currentPage = event;
+    this.currentPage = event.page;
   }
 
   changeBracket(value: string) {

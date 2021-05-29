@@ -17,8 +17,7 @@ export class PaginationComponent implements OnInit {
   @Input() numeroPaginas!: number;
   @Input() currentPage!: number;
 
-  @Output() newLeaderboardEvent = new EventEmitter<LeaderResult>();
-  @Output() newCurrentPageEvent = new EventEmitter<number>();
+  @Output() newLeaderboardEvent = new EventEmitter<any>();
 
   constructor(
     private spinner: NgxSpinnerService, 
@@ -32,8 +31,7 @@ export class PaginationComponent implements OnInit {
     this.spinner.show()
     this.leaderboardsService.getLeaderboard(this.bracket, environment.currentSeason, this.region, num)
       .subscribe(resp => {
-        this.newLeaderboardEvent.emit(resp);
-        this.newCurrentPageEvent.emit(num);
+        this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'page': num });
         this.spinner.hide();
     })
   }

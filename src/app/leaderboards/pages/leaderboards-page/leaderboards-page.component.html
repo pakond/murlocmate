@@ -50,7 +50,6 @@
         [currentPage]="currentPage"
         [region]="region"
         (newLeaderboardEvent)="refreshLeaderboard($event)"
-        (newCurrentPageEvent)="page($event)"
     >
     </app-pagination>
     <app-table [leaderboard]="leaderboard"></app-table>
@@ -61,7 +60,6 @@
         [currentPage]="currentPage"
         [region]="region"
         (newLeaderboardEvent)="refreshLeaderboard($event)"
-        (newCurrentPageEvent)="page($event)"
     >
     </app-pagination>
 </div>

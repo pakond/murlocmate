@@ -43,10 +43,6 @@ export class CharacterDetailPageComponent implements OnInit {
           this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
           this.exists = true;
           this.spinner.hide();
-          this.charactersService.getRealm(this.character.realm.id).subscribe(
-            resp => { 
-              this.character.realm = resp
-            });
         },
         err => {
           this.spinner.show()
@@ -62,10 +58,6 @@ export class CharacterDetailPageComponent implements OnInit {
                       this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
                       this.exists = true;
                       this.spinner.hide();
-                      this.charactersService.getRealm(this.character.realm.id).subscribe(
-                        resp => { 
-                          this.character.realm = resp;
-                        });
                     },
                     (err) => { 
                       this.exists = false;

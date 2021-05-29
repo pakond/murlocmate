@@ -31,7 +31,7 @@ export class FilterComponent implements OnInit {
   @Input() region!: string;
   @Input() currentPage!: number;
 
-  @Output() newLeaderboardEvent = new EventEmitter<LeaderResult>();
+  @Output() newLeaderboardEvent = new EventEmitter<any>();
 
   constructor(
     private sharedService: SharedService,
@@ -40,7 +40,7 @@ export class FilterComponent implements OnInit {
   ) { 
     this.clases = sharedService.getClases;
     this.specs = sharedService.getSpecs;
-    this.realms = sharedService.getRealms;
+    this.realms = this.sharedService.realms.sort((a, b) => a.slug.localeCompare(b.slug));;
   }
 
   ngOnInit(): void {
@@ -55,7 +55,7 @@ export class FilterComponent implements OnInit {
     this.spinner.show()
     this.leaderboardsService.getLeaderboard(this.bracket, environment.currentSeason, this.region, this.currentPage, faction)
       .subscribe(resp => {
-        this.newLeaderboardEvent.emit(resp);
+        this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'page': 1 });
         this.spinner.hide();
     })
   }

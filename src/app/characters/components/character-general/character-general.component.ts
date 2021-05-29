@@ -41,7 +41,7 @@ export class CharacterGeneralComponent implements OnChanges, OnInit {
     let fecha = new Date(this.character.last_update);
     this.interval = setInterval(() => {
       const fechaActual = new Date()
-      this.tiempo = this.sharedService.calculaTiempo2(fecha, fechaActual);
+      this.tiempo = this.sharedService.calculaTiempo(fecha, fechaActual);
       this.updateButton()
     }, 1000);
   }

@@ -30,6 +30,7 @@ export class LeaderboardsPageComponent implements OnInit {
     this.spinner.show();
     this.route.params.subscribe(params => {
       this.bracket = params['bracket'];
+      if (this.bracket !== '2v2' && this.bracket !== '3v3' && this.bracket !== 'rbg') { this.bracket = '3v3' }
       this.leaderboardsService.getLeaderboard(this.bracket, environment.currentSeason, this.region, this.currentPage)
         .subscribe(resp => {
           this.leaderboard = resp;
@@ -40,12 +41,15 @@ export class LeaderboardsPageComponent implements OnInit {
     
   }
 
-  paginate(event: LeaderResult): void {
+  refreshLeaderboard(event: LeaderResult): void {
     this.leaderboard = event;
+    this.numeroPaginas = Math.ceil(this.leaderboard.count / 100)
   }
+
   page(event: number): void {
     this.currentPage = event;
   }
+
   changeBracket(value: string) {
     this.spinner.show();
     this.currentPage = 1;

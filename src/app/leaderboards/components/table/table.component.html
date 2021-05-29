@@ -55,6 +55,11 @@
                 <span style="color: rgb(3, 148, 3);" *ngIf="item.character.guild"><small><{{ item.character.guild }}></small></span>
             </th>
             <th>
+                <img 
+                    [src]="item.character.realm | realmIcon"
+                    [alt]="item.character.realm"
+                    style="width: 20px; margin-right: 3px;"
+                >
                 <span style="color: #e93a3a;" *ngIf="item.character.faction === 'Horde'; else realmElse">{{ item.character.realm | titlecase}}</span>
                 <ng-template #realmElse>
                     <span style="color: #4accff;">{{ item.character.realm | titlecase }}</span>
@@ -70,7 +75,7 @@
     </table>
 </div>
 <div 
-    class="row p-2 text-center" 
+    class="row text-center" 
     style="background-color: rgba(0, 0, 0, 0.4);"
     *ngIf="smallScreen === true"
 >
@@ -86,9 +91,6 @@
                 NAME
             </th>
             <th>
-                REALM
-            </th>
-            <th>
                 RATING
             </th>
         </tr>
@@ -98,8 +100,8 @@
             </th>
             <th>    
                 <img 
-                    [src]="item.character.wow_class | classIcon"
-                    [alt]="item.character.wow_class"
+                    [src]="item.character.race | raceIcon: item.character.gender"
+                    [alt]="item.character.race"
                     style="width: 25px; margin: 3px;"
                 >
                 <img 
@@ -109,13 +111,7 @@
                 >
             </th>
             <th [routerLink]="'/character/' + item.character.region + '/' + item.character.realm + '/' + item.character.name" style="cursor: pointer;">
-                <span [style]="{ 'color': item.character.wow_class | classColor }">{{ item.character.name | titlecase }}</span>
-            </th>
-            <th>
-                <span style="color: #e93a3a;" *ngIf="item.character.faction === 'Horde'; else realmElse">{{ item.character.realm | titlecase}}</span>
-                <ng-template #realmElse>
-                    <span style="color: #4accff;">{{ item.character.realm | titlecase }}</span>
-                </ng-template>
+                <span [style]="{ 'color': item.character.wow_class | classColor }">{{ item.character.name | titlecase }}-{{ item.character.realm | titlecase}}</span>
             </th>
             <th>
                 {{ item.rating }}

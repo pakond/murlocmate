@@ -32,7 +32,7 @@ export class InputSearchComponent implements OnInit {
 
     this.debouncer
       .pipe(
-        debounceTime(400)
+        debounceTime(50)
       )
       .subscribe(value => {
         value = value.toLowerCase().trim();

@@ -16,6 +16,8 @@ export interface SearchRealms {
     id: number;
     slug: string;
     region: string;
+    icon: string;
+    category: string;
 }
 
 export interface Realm {
@@ -56,6 +58,7 @@ export interface Spec {
     name: string;
     id: number;
     icon: string;
+    wow_class: number;
 }
 
 export interface Bracket {

@@ -1,0 +1,11 @@
+.pagination-div {
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+@media (min-width: 992px) {
+    .pagination-div {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 85%; 
+        margin: auto; 
+    }
+}

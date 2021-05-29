@@ -35,13 +35,21 @@
             <strong>RBG</strong>
         </div>
     </div>
+    <app-filter
+        [leaderboard]="leaderboard"
+        [bracket]="bracket"
+        [currentPage]="currentPage"
+        [region]="region"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
+    >
+    </app-filter>
     <app-pagination 
         [bracket]="bracket"
         [leaderboard]="leaderboard"
         [numeroPaginas]="numeroPaginas"
         [currentPage]="currentPage"
         [region]="region"
-        (newLeaderboardEvent)="paginate($event)"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
         (newCurrentPageEvent)="page($event)"
     >
     </app-pagination>
@@ -52,7 +60,7 @@
         [numeroPaginas]="numeroPaginas"
         [currentPage]="currentPage"
         [region]="region"
-        (newLeaderboardEvent)="paginate($event)"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
         (newCurrentPageEvent)="page($event)"
     >
     </app-pagination>

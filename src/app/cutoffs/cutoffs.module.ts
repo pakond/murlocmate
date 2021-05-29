@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CutoffsPageComponent } from './pages/cutoffs-page/cutoffs-page.component';
+import { CutoffsRoutingModule } from './cutoffs-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { CutoffsPageComponent } from './pages/cutoffs-page/cutoffs-page.componen
     CutoffsPageComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CutoffsRoutingModule
   ]
 })
 export class CutoffsModule { }

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
-import { SCREEN_SIZE } from '../interfaces/screen-size.enum';
-import { ResizeService } from '../services/resize.service';
+import { SCREEN_SIZE } from '../../interfaces/screen-size.enum';
+import { ResizeService } from '../../services/resize.service';
 
 @Component({
   selector: 'app-size-detector',

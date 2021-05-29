@@ -8,17 +8,21 @@ import { LeaderboardsPageComponent } from './pages/leaderboards-page/leaderboard
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { TableComponent } from './components/table/table.component';
+import { LeaderboardsRoutingModule } from './leaderboards-routing.module';
+import { FilterComponent } from './components/filter/filter.component';
 
 @NgModule({
   declarations: [
     LeaderboardsPageComponent,
     PaginationComponent,
-    TableComponent
+    TableComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     NgxSpinnerModule,
+    LeaderboardsRoutingModule,
     PipesModule
   ]
 })

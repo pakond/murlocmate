@@ -1,6 +1,5 @@
 <div 
-    class="row p-4" 
-    style="background-color: rgba(0, 0, 0, 0.4); width: 85%; margin: auto;"
+    class="row p-4 pagination-div" 
 >
     <ul class="pagination">
         <div *ngFor="let dummy of ' '.repeat(numeroPaginas).split(''), let x = index" style="display: inline;">
@@ -16,7 +15,6 @@
             <li 
                 style="display: inline; background-color: rgba(3, 105, 34, 0.6); margin: 5px; padding: 5px 10px 5px 10px; cursor: not-allowed;"
                 *ngIf="x+1 === currentPage"
-                (click)="pagination(x+1)"
             >
                 {{ x + 1 }}
             </li>

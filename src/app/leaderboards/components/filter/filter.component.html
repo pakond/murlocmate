@@ -1,0 +1,59 @@
+
+<div class="row p-4 filter-div">
+    <div class="col">
+        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+            <option value="Both" selected style="background-color: black;" (click)="filterFactions('Both')">Both factions</option>
+            <option value="Alliance" style="background-color: black; color: #4accff" (click)="filterFactions('Alliance')">Alliance</option>
+            <option value="Horde" style="background-color: black; color: #e93a3a;" (click)="filterFactions('Horde')">Horde</option>
+        </select>
+    </div>
+    <div class="col">
+        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+            <option value="all" selected style="background-color: black;">All realms</option>
+            <option 
+                *ngFor="let realm of realms"
+                [value]="realm.slug"
+                style="background-color: black;"
+            >
+                {{ realm.slug | titlecase }}
+            </option>
+        </select>
+    </div>
+    <div class="col">
+        <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+            <option value="all" selected style="background-color: black;">All countries</option>
+            <option 
+                *ngFor="let country of countries"
+                [value]="country"
+                style="background-color: black;"
+            >
+                {{ country | titlecase }}
+            </option>
+        </select>
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-warning btn-sm">Reset filters</button>
+    </div>
+</div>
+<div class="row p-4 filter-div">
+    <div 
+        class="col text-center"
+        *ngFor="let wowClass of clases"
+    >
+        <img
+            class="img-fluid"
+            [src]="wowClass.icon"
+            [alt]="wowClass.name"
+            data-toggle="tooltip" [title]="wowClass.name"
+            [style]="{ 'width': '80px','margin-bottom': '10px', 'margin-top': '10px', 'border-radius': '50%', 'border': '3px solid ' + wowClass.color }"
+        />
+        <br>
+        <img
+            *ngFor="let spec of getClassSpecs(wowClass.id)"
+            [src]="spec.icon"
+            [alt]="spec.name"
+            data-toggle="tooltip" [title]="spec.name"
+            [style]="{ 'display': 'inline', 'width': '24px', 'margin-right': '1px', 'border': '1px solid ' + wowClass.color }"
+        />
+    </div>
+</div>

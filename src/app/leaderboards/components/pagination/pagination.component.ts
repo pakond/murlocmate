@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-pagination',
-  templateUrl: './pagination.component.html'
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
 
@@ -19,7 +20,10 @@ export class PaginationComponent implements OnInit {
   @Output() newLeaderboardEvent = new EventEmitter<LeaderResult>();
   @Output() newCurrentPageEvent = new EventEmitter<number>();
 
-  constructor(private spinner: NgxSpinnerService, private leaderboardsService: LeaderboardsService) { }
+  constructor(
+    private spinner: NgxSpinnerService, 
+    private leaderboardsService: LeaderboardsService,
+  ) {}
 
   ngOnInit(): void {
   }
@@ -33,5 +37,5 @@ export class PaginationComponent implements OnInit {
         this.spinner.hide();
     })
   }
-
+  
 }

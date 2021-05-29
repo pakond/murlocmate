@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     NgxSpinnerModule,
     SharedModule,
-    LeaderboardsModule,
+    // LeaderboardsModule,
     CharactersModule
   ],
   providers: [

@@ -1,0 +1,76 @@
+<div 
+    class="row p-4 pagination-div" 
+>
+    <ul class="pagination">
+        <!-- PRIMERA -->
+        <li class="page-item"
+            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+            (click)="pagination(1)"
+        >
+        1
+        </li>
+        <ng-container *ngFor="let dummy of ' '.repeat(numeroPaginas).split(''), let x = index" style="display: inline;">
+            <!-- SEGUNDA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === 1 && currentPage < 4"
+                (click)="pagination(x)"
+            >
+                2
+            </li>
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === 1 && currentPage >= 4"
+                (click)="pagination(2)"
+            >
+                ...
+            </li>
+            <!-- TERCERA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === currentPage - 2"
+                (click)="pagination(x)"
+            >
+                {{ x }}
+            </li>
+            <!-- CUARTA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === currentPage - 1"
+                (click)="pagination(x)"
+            >
+                {{ x }}
+            </li>
+            <!-- QUINTA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === currentPage"
+                (click)="pagination(x)"
+            >
+                {{ x }}
+            </li>
+            <!-- SEXTA -->
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === (numeroPaginas - 1) && currentPage > (numeroPaginas - 3)"
+                (click)="pagination(x)"
+            >
+                {{ x }}
+            </li>
+            <li class="page-item" 
+                style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+                *ngIf="x === (numeroPaginas - 1) && currentPage <= (numeroPaginas - 3)"
+                (click)="pagination(x)"
+            >
+                ...
+            </li>
+        </ng-container>
+        <!-- ULTIMA -->
+        <li class="page-item" 
+            style="display: inline; background-color: #212529; margin: 5px; padding: 5px 10px 5px 10px; cursor: pointer;"
+            (click)="pagination(numeroPaginas)"
+        >
+            {{ numeroPaginas }}
+        </li>
+    </ul>
+</div>

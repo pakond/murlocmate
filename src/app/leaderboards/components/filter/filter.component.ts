@@ -18,8 +18,8 @@ export class FilterComponent implements OnChanges {
 
   oldBracket: string;
   clases: WowClass[];
-  filteredClases: string[] = [];
-  filteredSpecs: string[] = [];
+  filteredClases: number[] = [];
+  filteredSpecs: number[] = [];
   specs: Spec[];
   realms: SearchRealms[];
   countries = [
@@ -133,7 +133,7 @@ export class FilterComponent implements OnChanges {
     })
   }
 
-  filterClass(value: string, term: string) {
+  filterClass(value: number, term: string) {
     this.spinner.show();
     if (this.url.includes(term)) {
       if (this.filteredClases.includes(value)) {
@@ -141,25 +141,49 @@ export class FilterComponent implements OnChanges {
         this.filteredClases = this.filteredClases.filter(function(valor){ 
           return valor !== value;
         });
-        let imgClass = document.getElementById(value);
+        let imgClass = document.getElementById('wow_class-' + value.toString());
         imgClass!.classList.remove('class-filtered-style');
         imgClass!.classList.add('class-style');
-        this.url = this.url.replace(term + value, '');
+        const specs = this.sharedService.getSpecs.filter(spec => spec.wow_class === value)
+        specs.forEach(spec=> {
+          this.filteredSpecs = this.filteredSpecs.filter(function(valor){ 
+            return valor !== spec.id;
+          });
+          let imgSpec = document.getElementById('spec-' + spec.id.toString());
+          imgSpec!.classList.remove('spec-filtered-style');
+          imgSpec!.classList.add('spec-style');
+          this.url = this.url.replace(term + spec.id, '');
+        })
+
       }
       else {
         // incluye el termino y OTRO valor
-        let imgClass = document.getElementById(value);
+        let imgClass = document.getElementById('wow_class-' + value.toString());
         imgClass!.classList.add('class-filtered-style');
         this.filteredClases.push(value);
-        this.url += term + value;
+        const specs = this.sharedService.getSpecs.filter(spec => spec.wow_class === value)
+        specs.forEach(spec=> {
+          let imgSpec = document.getElementById('spec-' + spec.id.toString());
+          imgSpec!.classList.remove('spec-style');
+          imgSpec!.classList.add('spec-filtered-style');
+          this.filteredSpecs.push(spec.id)
+          this.url += term + spec.id;
+        })
       }
     } 
     else {
       // no incluye termino ni valor
       this.filteredClases.push(value);
-      let imgClass = document.getElementById(value);
+      let imgClass = document.getElementById('wow_class-' + value.toString());
       imgClass!.classList.add('class-filtered-style');
-      this.url += term + value;
+      const specs = this.sharedService.getSpecs.filter(spec => spec.wow_class === value)
+      specs.forEach(spec=> {
+        let imgSpec = document.getElementById('spec-' + spec.id.toString());
+        imgSpec!.classList.remove('spec-style');
+        imgSpec!.classList.add('spec-filtered-style');
+        this.filteredSpecs.push(spec.id)
+        this.url += term + spec.id;
+      })
     }
     this.resetPage();
     this.leaderboardsService.getLeaderboard(this.url)
@@ -169,32 +193,59 @@ export class FilterComponent implements OnChanges {
     })
   }
 
-  filterSpec(spec: string, wowClass: string, term: string) {
+  filterSpec(spec: number, wowClass: number, term: string) {
     this.spinner.show();
     if (this.url.includes(term)) {
       if (this.filteredSpecs.includes(spec)) {
         // incluye el termino y el MISMO valor
         this.filteredClases = this.filteredClases.filter(function(valor){ 
+          return valor !== wowClass;
+        });
+        let imgClass = document.getElementById('wow_class-' + wowClass.toString());
+        imgClass!.classList.remove('class-filtered-style');
+        imgClass!.classList.add('class-style');
+        this.filteredSpecs = this.filteredSpecs.filter(function(valor){ 
           return valor !== spec;
         });
-        let imgClass = document.getElementById(spec);
-        imgClass!.classList.remove('spec-filtered-style');
-        imgClass!.classList.add('spec-style');
+        let imgSpec = document.getElementById('spec-' + spec.toString());
+        imgSpec!.classList.remove('spec-filtered-style');
+        imgSpec!.classList.add('spec-style');
         this.url = this.url.replace(term + spec, '');
       }
       else {
         // incluye el termino y OTRO valor
-        let imgClass = document.getElementById(spec);
-        imgClass!.classList.add('spec-filtered-style');
-        this.filteredSpecs.push(spec);
-        this.url += term + spec;
+        const classSpecs = this.sharedService.getSpecs.filter(item => item.wow_class === wowClass);
+        let contador: number = 1;
+        classSpecs.forEach(item => {
+          if (this.filteredSpecs.includes(item.id)) { contador += 1 }
+        })
+        if (contador === classSpecs.length) {
+          // incluye las otras specs de la clase . Añadir la clase y spec a filtradas
+          let imgSpec = document.getElementById('spec-' + spec.toString());
+          imgSpec!.classList.remove('spec-style');
+          imgSpec!.classList.add('spec-filtered-style');
+          this.filteredSpecs.push(spec);
+          this.url += term + spec;
+          let imgClass = document.getElementById('wow_class-' + wowClass);
+          imgClass!.classList.remove('class-style');
+          imgClass!.classList.add('class-filtered-style');
+          this.filteredClases.push(wowClass);
+        }
+        else {
+          let imgSpec = document.getElementById('spec-' + spec.toString());
+          imgSpec!.classList.remove('spec-style');
+          imgSpec!.classList.add('spec-filtered-style');
+          this.filteredSpecs.push(spec);
+          this.url += term + spec;
+        }
       }
     } 
     else {
       // no incluye termino ni valor
       this.filteredSpecs.push(spec);
-      let imgClass = document.getElementById(spec);
-      imgClass!.classList.add('spec-filtered-style');
+      let imgSpec = document.getElementById('spec-' + spec.toString());
+      imgSpec!.classList.remove('spec-style');
+      imgSpec!.classList.add('spec-filtered-style');
       this.url += term + spec;
     }
     this.resetPage();
@@ -207,13 +258,13 @@ export class FilterComponent implements OnChanges {
 
   resetFilter() {
     this.clases.forEach(wowClass => {
-      let imgClass = document.getElementById(wowClass.name);
+      let imgClass = document.getElementById('wow_class-' + wowClass.id.toString());
       imgClass?.classList.remove('class-filtered-style');
       imgClass?.classList.add('class-style');
     })
     this.filteredClases = [];
     this.specs.forEach(spec => {
-      let imgClass = document.getElementById(spec.name);
+      let imgClass = document.getElementById('spec-' + spec.id.toString());
       imgClass?.classList.remove('spec-filtered-style');
       imgClass?.classList.add('spec-style');
     })

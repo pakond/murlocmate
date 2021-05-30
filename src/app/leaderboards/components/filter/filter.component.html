@@ -43,24 +43,24 @@
             *ngFor="let wowClass of clases"
         >
             <img
-                [id]="wowClass.name"
+                [id]="'wow_class-' + wowClass.id"
                 class="img-fluid class-style"  
                 [src]="wowClass.icon"
                 [alt]="wowClass.name"
                 data-toggle="tooltip" [title]="wowClass.name"
                 [style]="{ 'border': '3px solid ' + wowClass.color }"
-                (click)="filterClass(wowClass.name, '&character__wow_class__name=')"
+                (click)="filterClass(wowClass.id, '&character__spec__id=')"
             />
             <br>
             <img
-                [id]="spec.name"
+                [id]="'spec-' + spec.id"
                 class="spec-style"
                 *ngFor="let spec of getClassSpecs(wowClass.id)"
                 [src]="spec.icon"
                 [alt]="spec.name"
                 data-toggle="tooltip" [title]="spec.name"
                 [style]="{ 'border': '1px solid ' + wowClass.color }"
-                (click)="filterSpec(spec.name, wowClass.name, '&character__spec__name=')"
+                (click)="filterSpec(spec.id, wowClass.id, '&character__spec__id=')"
             />
         </div>
     </div>

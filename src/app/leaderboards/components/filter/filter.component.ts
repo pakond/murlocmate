@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SearchRealms, Spec, WowClass } from 'src/app/shared/interfaces/shared.interfaces';
@@ -12,12 +12,14 @@ import { LeaderboardsService } from '../../services/leaderboards.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnChanges {
 
   filterForm: FormGroup;
 
+  oldBracket: string;
   clases: WowClass[];
   filteredClases: string[] = [];
+  filteredSpecs: string[] = [];
   specs: Spec[];
   realms: SearchRealms[];
   countries = [
@@ -46,11 +48,18 @@ export class FilterComponent implements OnInit {
     this.realms = this.sharedService.getRealms.sort((a, b) => a.slug.localeCompare(b.slug));
     this.filterForm = this.fb.group({
       realm: new FormControl(''),
+      countries: new FormControl('')
     })
     this.filterForm.get('realm')!.setValue('All')
+    this.filterForm.get('countries')!.setValue('All')
+    this.oldBracket = this.bracket;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
+    if (this.bracket !== this.oldBracket) {
+      this.resetFilter();
+      this.oldBracket = this.bracket;
+    }
   }
 
   getClassSpecs(wowClassId: number) {
@@ -128,33 +137,25 @@ export class FilterComponent implements OnInit {
     this.spinner.show();
     if (this.url.includes(term)) {
       if (this.filteredClases.includes(value)) {
+        // incluye el termino y el MISMO valor
         this.filteredClases = this.filteredClases.filter(function(valor){ 
           return valor !== value;
         });
         let imgClass = document.getElementById(value);
         imgClass!.classList.remove('class-filtered-style');
         imgClass!.classList.add('class-style');
-        let value2 = this.url.split(term)[1];
-        value2 = value2.split('&')[0];
-        this.url = this.url.replace(term + value2, '');
+        this.url = this.url.replace(term + value, '');
       }
       else {
+        // incluye el termino y OTRO valor
         let imgClass = document.getElementById(value);
         imgClass!.classList.add('class-filtered-style');
         this.filteredClases.push(value);
-        let value2 = this.url.split(term)[1];
-        value2 = value2.split('&')[0];
-        let imgClass2 = document.getElementById(value2);
-        imgClass2!.classList.remove('class-filtered-style');
-        imgClass2!.classList.add('class-style');
-        this.filteredClases = this.filteredClases.filter(function(valor){ 
-          return valor !== value2;
-        });
-        this.url = this.url.replace(value2, value);
+        this.url += term + value;
       }
     } 
     else {
-      // AÑADE AL FINAL DE LA URL EL TERMINO Y VALOR
+      // no incluye termino ni valor
       this.filteredClases.push(value);
       let imgClass = document.getElementById(value);
       imgClass!.classList.add('class-filtered-style');
@@ -168,7 +169,68 @@ export class FilterComponent implements OnInit {
     })
   }
 
-  resetFilters() {
+  filterSpec(spec: string, wowClass: string, term: string) {
+    this.spinner.show();
+    if (this.url.includes(term)) {
+      if (this.filteredSpecs.includes(spec)) {
+        // incluye el termino y el MISMO valor
+        this.filteredClases = this.filteredClases.filter(function(valor){ 
+          return valor !== spec;
+        });
+        let imgClass = document.getElementById(spec);
+        imgClass!.classList.remove('spec-filtered-style');
+        imgClass!.classList.add('spec-style');
+        this.url = this.url.replace(term + spec, '');
+      }
+      else {
+        // incluye el termino y OTRO valor
+        let imgClass = document.getElementById(spec);
+        imgClass!.classList.add('spec-filtered-style');
+        this.filteredSpecs.push(spec);
+        this.url += term + spec;
+      }
+    } 
+    else {
+      // no incluye termino ni valor
+      this.filteredSpecs.push(spec);
+      let imgClass = document.getElementById(spec);
+      imgClass!.classList.add('spec-filtered-style');
+      this.url += term + spec;
+    }
+    this.resetPage();
+    this.leaderboardsService.getLeaderboard(this.url)
+      .subscribe(resp => {
+        this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.spinner.hide();
+    })
+  }
+
+  resetFilter() {
+    this.clases.forEach(wowClass => {
+      let imgClass = document.getElementById(wowClass.name);
+      imgClass?.classList.remove('class-filtered-style');
+      imgClass?.classList.add('class-style');
+    })
+    this.filteredClases = [];
+    this.specs.forEach(spec => {
+      let imgClass = document.getElementById(spec.name);
+      imgClass?.classList.remove('spec-filtered-style');
+      imgClass?.classList.add('spec-style');
+    })
+    this.filteredSpecs = [];
+
+    this.realms = this.sharedService.getRealms.sort((a, b) => a.slug.localeCompare(b.slug));
+    this.filterForm.get('realm')!.setValue('All');
+    this.filterForm.get('countries')!.setValue('All');
+  }
+
+  resetPage(): void {
+    let page = this.url.split('&page=')[1];
+    page = page.split('&')[0];
+    this.url = this.url.replace('&page=' + page, '&page=1');
+  }
+
+  resetFiltersButton() {
     this.spinner.show()
     this.url = environment.apiUrl 
         + '/pvp-entry-' + this.bracket
@@ -177,16 +239,11 @@ export class FilterComponent implements OnInit {
         + '&page=1'
         + '&ordering=rank'
     ;
+    this.resetFilter();
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
         this.spinner.hide();
     })
-  }
-
-  resetPage(): void {
-    let page = this.url.split('&page=')[1];
-    page = page.split('&')[0];
-    this.url = this.url.replace('&page=' + page, '&page=1');
   }
 }

@@ -16,6 +16,7 @@ export class PaginationComponent implements OnChanges {
 
   @Input() leaderboard!: LeaderResult;
   @Input() url!: string;
+  @Input() bracket!: string;
 
   @Output() newLeaderboardEvent = new EventEmitter<any>();
 

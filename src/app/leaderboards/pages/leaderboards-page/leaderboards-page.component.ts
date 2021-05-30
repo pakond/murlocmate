@@ -5,6 +5,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { LeaderResult } from '../../interfaces/leaderboards.interfaces';
 import { LeaderboardsService } from '../../services/leaderboards.service';
 import { environment } from 'src/environments/environment';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-leaderboards-page',
@@ -22,7 +23,7 @@ export class LeaderboardsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private leaderboardsService: LeaderboardsService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit(): void {

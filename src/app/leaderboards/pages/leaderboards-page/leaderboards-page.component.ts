@@ -30,6 +30,10 @@ export class LeaderboardsPageComponent implements OnInit {
     this.spinner.show();
     this.route.params.subscribe(params => {
       this.bracket = params['bracket'];
+      if (this.bracket.includes('f=')) {
+        const arrayparams = this.bracket.split('f=');
+        this.bracket = arrayparams[0];
+      }
       if (this.bracket !== '2v2' && this.bracket !== '3v3' && this.bracket !== 'rbg') { this.bracket = '3v3' }
       this.url = environment.apiUrl 
         + '/pvp-entry-' + this.bracket

@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Location } from '@angular/common';
+import { AfterViewInit, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SearchRealms, Spec, WowClass } from 'src/app/shared/interfaces/shared.interfaces';
@@ -12,7 +13,7 @@ import { LeaderboardsService } from '../../services/leaderboards.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss']
 })
-export class FilterComponent implements OnChanges {
+export class FilterComponent implements OnChanges, AfterViewInit {
 
   filterForm: FormGroup;
 
@@ -41,15 +42,18 @@ export class FilterComponent implements OnChanges {
     private sharedService: SharedService,
     private spinner: NgxSpinnerService,
     private fb: FormBuilder,
-    private leaderboardsService: LeaderboardsService
+    private leaderboardsService: LeaderboardsService,
+    private location: Location
   ) { 
     this.clases = sharedService.getClases;
     this.specs = sharedService.getSpecs;
     this.realms = this.sharedService.getRealms.sort((a, b) => a.slug.localeCompare(b.slug));
     this.filterForm = this.fb.group({
+      faction: new FormControl(''),
       realm: new FormControl(''),
       countries: new FormControl('')
     })
+    this.filterForm.get('faction')!.setValue('All')
     this.filterForm.get('realm')!.setValue('All')
     this.filterForm.get('countries')!.setValue('All')
     this.oldBracket = this.bracket;
@@ -60,6 +64,74 @@ export class FilterComponent implements OnChanges {
       this.resetFilter();
       this.oldBracket = this.bracket;
     }
+  }
+
+  ngAfterViewInit() {
+    if (this.location.path().includes('?filter=')) {
+      this.applyFilters(decodeURIComponent(this.location.path().split('?filter=')[1]));
+    }
+  }
+
+  // aplica los filtros de la url si hay
+  applyFilters(filters: string): void {
+    this.spinner.show();
+    
+    const filtros = filters.split('&');
+    console.log(filtros)
+    filtros.forEach(filtro=> {
+
+      const filter: string[] = filtro.split('=');
+      const value = filter[1];
+      const key = filter[0];
+
+      // filtro en faction
+      if (key === 'character__faction__name') {
+        this.filterForm.get('faction')!.setValue(value);
+        this.url += '&' + key + '=' + value;
+      }
+
+      // filtro en reino
+      if (key === 'character__realm__slug') {
+        this.filterForm.get('realm')!.setValue(value);
+        this.url += '&' + key + '=' + value;
+      }
+
+      // filtro en countries
+      if (key === 'character__realm__category') {
+        this.realms = this.sharedService.getRealms.filter(realm => realm.category === value).sort((a, b) => a.slug.localeCompare(b.slug));
+        this.filterForm.get('countries')!.setValue(value);
+        this.url += '&' + key + '=' + value;
+      }
+
+      // filtro en specs
+      if (key === 'character__spec__id') {
+        let imgSpec = document.getElementById('spec-' + value.toString());
+        imgSpec!.classList.remove('spec-style');
+        imgSpec!.classList.add('spec-filtered-style');
+        this.filteredSpecs.push(parseInt(value));
+        const wowClassId = this.sharedService.getSpecs.filter(spec => spec.id === parseInt(value))[0].wow_class
+        const specs = this.sharedService.getSpecs.filter(spec => spec.wow_class === wowClassId)
+        let contador: number = 1;
+        specs.forEach(item => {
+          if (this.filteredSpecs.includes(item.id)) { contador += 1 }
+        })
+        if (contador === specs.length) {
+          let imgClass = document.getElementById('wow_class-' + wowClassId.toString());
+          imgClass!.classList.remove('class-style');
+          imgClass!.classList.add('class-filtered-style');
+          this.filteredClases.push(wowClassId);
+        }
+        this.url += '&' + key + '=' + value;
+      }
+    });
+
+    // llama a la api con los filtros
+    this.resetPage();
+    this.leaderboardsService.getLeaderboard(this.url)
+      .subscribe(resp => {
+        this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.spinner.hide();
+    })
   }
 
   getClassSpecs(wowClassId: number) {
@@ -91,6 +163,7 @@ export class FilterComponent implements OnChanges {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         this.spinner.hide();
     })
   }
@@ -129,6 +202,7 @@ export class FilterComponent implements OnChanges {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         this.spinner.hide();
     })
   }
@@ -189,6 +263,7 @@ export class FilterComponent implements OnChanges {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         this.spinner.hide();
     })
   }
@@ -252,6 +327,7 @@ export class FilterComponent implements OnChanges {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         this.spinner.hide();
     })
   }
@@ -271,6 +347,7 @@ export class FilterComponent implements OnChanges {
     this.filteredSpecs = [];
 
     this.realms = this.sharedService.getRealms.sort((a, b) => a.slug.localeCompare(b.slug));
+    this.filterForm.get('faction')!.setValue('All')
     this.filterForm.get('realm')!.setValue('All');
     this.filterForm.get('countries')!.setValue('All');
   }
@@ -294,6 +371,7 @@ export class FilterComponent implements OnChanges {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
+        this.location.replaceState('/leaderboards/' + this.bracket);
         this.spinner.hide();
     })
   }

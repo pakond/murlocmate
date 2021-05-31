@@ -6,6 +6,7 @@ export const environment = {
   apiUrl: 'http://212.71.245.14/api',
   apiKey: 'MOuCL3aV.w0n7kKzjgQnwyWRn8uvmlKgNijF7Gwbn',
   staticImg: 'http://212.71.245.14/static/img/',
+  appHost: 'http://localhost:4200',
   currentSeason: 30,
   production: false
 };

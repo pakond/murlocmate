@@ -1,7 +1,7 @@
 <form [formGroup]="filterForm">
     <div class="row p-4 filter-div">
         <div class="col">
-            <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;">
+            <select class="form-select form-select-sm" style="background-color: rgba(0, 0, 0, 0.4); color: white;" formControlName="faction">
                 <option value="All" selected style="background-color: black;" (click)="filter('All', '&character__faction__name=')">Both factions</option>
                 <option value="Alliance" style="background-color: black; color: #4accff" (click)="filter('Alliance', '&character__faction__name=')">Alliance</option>
                 <option value="Horde" style="background-color: black; color: #e93a3a;" (click)="filter('Horde', '&character__faction__name=')">Horde</option>
@@ -59,7 +59,6 @@
                 [src]="spec.icon"
                 [alt]="spec.name"
                 data-toggle="tooltip" [title]="spec.name"
-                [style]="{ 'border': '1px solid ' + wowClass.color }"
                 (click)="filterSpec(spec.id, wowClass.id, '&character__spec__id=')"
             />
         </div>

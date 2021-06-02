@@ -27,6 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgxSpinnerModule,
     LeaderboardsRoutingModule,
     PipesModule
+  ],
+  exports: [
+    LeaderboardsPageComponent
   ]
 })
 export class LeaderboardsModule { }

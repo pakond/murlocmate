@@ -1,5 +1,15 @@
 <app-navbar [title]="title"></app-navbar>
-<div class="container-fluid">
+<div 
+    class="container-fluid"
+    [style]="{
+        'background-image': 'url(../assets/fondo.jpg)',
+        'background-repeat': 'no-repeat',
+        'background-position': 'center',
+        'background-attachment': 'fixed',
+        'background-size': 'cover',
+        'color': 'white'
+    }"
+>
     <router-outlet></router-outlet>
 </div>
 <app-size-detector></app-size-detector>

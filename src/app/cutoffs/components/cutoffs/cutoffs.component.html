@@ -1,0 +1,54 @@
+<div *ngIf="seasonData">
+    <div class="row cutoffs-div text-center rounded pb-2">
+        <div class="col p-4 m-2 rounded" style="background-color: rgba(33, 37, 41, 0.4); border: 1px solid grey;">
+            <span style="color: grey;">Started on</span>
+            <br>
+            <h1>{{ seasonData.season_start_timestamp | date }}</h1>
+        </div>
+        <div class="col p-4 m-2 rounded" style="background-color: rgba(33, 37, 41, 0.4); border: 1px solid grey;">
+            <span style="color: grey;">Ends on</span>
+            <br>
+            <h1 *ngIf="seasonData.season_end_timestamp; else elseSE">{{ seasonData.season_end_timestamp | date }}</h1>
+            <ng-template #elseSE><h1>TBA</h1></ng-template>
+        </div>
+        <div class="col p-4 m-2 rounded" style="background-color: rgba(33, 37, 41, 0.4); border: 1px solid grey;">
+            <span style="color: grey;">Duration</span>
+            <br>
+            <h1>{{ duration }} weeks</h1>
+        </div>
+    </div>
+    <div class="row cutoffs-div rounded pb-2 text-center">
+        <div class="col row-horda rounded">
+            Horde
+            <br>
+            <img
+                [src]="'Horde' | factionIcon"
+                alt="Horde"
+            >
+            <div *ngFor="let item of seasonData.rewards">
+                <div *ngIf="item.faction.name === 'Horde'">
+                    <hr>
+                    <p>Bracket: {{ item.bracket.pvp_type | titlecase }}</p>
+                    <p>Reward: {{ item.achievement.name | titlecase }}</p>
+                    <p>Rating: {{ item.cutoff }}</p>       
+                </div>
+            </div>
+        </div>
+        <div class="col row-alianza rounded">
+            Alliance
+            <br>
+            <img
+                [src]="'Alliance' | factionIcon"
+                alt="Alliance"
+            >
+            <div *ngFor="let item of seasonData.rewards">
+                <div *ngIf="item.faction.name === 'Alliance'">
+                    <hr>
+                    <p>Bracket: {{ item.bracket.pvp_type | titlecase }}</p>
+                    <p>Reward: {{ item.achievement.name |titlecase }}</p>
+                    <p>Rating: {{ item.cutoff }}</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

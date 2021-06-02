@@ -10,15 +10,25 @@
           <a class="nav-link text-white" routerLink="cutoffs">Cutoffs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" routerLink="charts">Charts</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white" routerLink="/archives/s29">Archives</a>
+          <a class="nav-link text-white" routerLink="/archives/29">Archives</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" routerLink="/leaderboards/3v3">Leaderboards</a>
         </li>
       </ul>
+      <a hreF="">
+        <img 
+          [src]="environments.staticImg + 'region/estados-unidos-de-america.png'"
+          style="width: 30px; margin-right: 10px; filter: grayscale(100%); "
+          href=""
+          alt="America"
+        >
+      </a>
+      <img 
+        [src]="environments.staticImg + 'region/union-europea.png'"
+        style="width: 30px; margin-right: 50px;"
+        alt="Europe"
+      >
       <app-input-search></app-input-search>
     </div>
   </div>

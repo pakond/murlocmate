@@ -77,7 +77,6 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.spinner.show();
     
     const filtros = filters.split('&');
-    console.log(filtros)
     filtros.forEach(filtro=> {
 
       const filter: string[] = filtro.split('=');
@@ -163,7 +162,11 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
-        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        if (this.location.path().includes('leaderboards')) {
+          this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        } else if (this.location.path().includes('archives')) {
+          this.location.replaceState('/archives/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        }
         this.spinner.hide();
     })
   }

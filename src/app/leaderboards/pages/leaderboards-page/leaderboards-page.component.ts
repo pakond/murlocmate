@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 import { LeaderResult } from '../../interfaces/leaderboards.interfaces';
 import { LeaderboardsService } from '../../services/leaderboards.service';
 import { environment } from 'src/environments/environment';
-import { SharedService } from 'src/app/shared/services/shared.service';
 
 @Component({
   selector: 'app-leaderboards-page',
@@ -19,6 +18,8 @@ export class LeaderboardsPageComponent implements OnInit {
   leaderboard!: LeaderResult;
   url: string = '';
 
+  @Input() season?: number;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -29,7 +30,7 @@ export class LeaderboardsPageComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.route.params.subscribe(params => {
-      this.bracket = params['bracket'];
+      this.bracket = params['bracket'] || '';
       if (this.bracket.includes('f=')) {
         const arrayparams = this.bracket.split('f=');
         this.bracket = arrayparams[0];

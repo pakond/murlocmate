@@ -1,1 +1,31 @@
-<p>archives-page works!</p>
+<ngx-spinner [fullScreen]="false" bdColor="rgba(0, 0, 0, 0.4)"></ngx-spinner>
+<div 
+    *ngIf="season" 
+    class="row p-3 justify-content-center" 
+>
+    <div class="row mb-4" style="width: 80%;">
+        <div
+            class="col p-2 text-center season"
+            [ngClass]="{'active-season': season === 27 }"
+            routerLink="/archives/27"
+        >
+            <strong>27: BFA Season 2</strong>
+        </div>
+        <div
+            class="col p-2 text-center season"
+            [ngClass]="{'active-season': season === 28 }"
+            routerLink="/archives/28"
+        >
+            <strong>28: BFA Season 3</strong>
+        </div>
+        <div
+            class="col p-2 text-center season"
+            [ngClass]="{'active-season': season === 29 }"
+            routerLink="/archives/29"
+        >
+            <strong>29: BFA Season 4</strong>
+        </div>    
+    </div>
+    <app-cutoffs [season]="season"></app-cutoffs>
+    <app-leaderboards-page></app-leaderboards-page>
+</div>

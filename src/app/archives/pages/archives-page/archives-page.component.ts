@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { LeaderResult } from 'src/app/leaderboards/interfaces/leaderboards.interfaces';
@@ -25,6 +26,7 @@ export class ArchivesPageComponent implements OnInit {
     private router: Router,
     private leaderboardsService: LeaderboardsService,
     private spinner: NgxSpinnerService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,7 @@ export class ArchivesPageComponent implements OnInit {
       this.leaderboardsService.getLeaderboard(this.url)
         .subscribe(resp => {
           this.leaderboard = resp;
+          this.titleService.setTitle('Murlocmate | WoW PvP Season ' + this.season + ' Archive')
           this.spinner.hide();
         })
     })

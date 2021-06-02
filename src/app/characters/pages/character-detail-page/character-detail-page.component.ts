@@ -4,6 +4,7 @@ import { CharactersService } from '../../services/characters.service';
 import { Character } from '../../interfaces/characters.interfaces';
 import { SharedService } from '../../../shared/services/shared.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-character-detail-page',
@@ -23,7 +24,8 @@ export class CharacterDetailPageComponent implements OnInit {
     private route: ActivatedRoute,
     private charactersService: CharactersService,
     private sharedService: SharedService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private titleService: Title
   ) {
 
   }
@@ -42,6 +44,7 @@ export class CharacterDetailPageComponent implements OnInit {
           this.character = resp;
           this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
           this.exists = true;
+          this.titleService.setTitle('MurlocMate | Character ' + this.character.active_title + ' ' + this.character.realm.slug)
           this.spinner.hide();
         },
         err => {
@@ -57,6 +60,7 @@ export class CharacterDetailPageComponent implements OnInit {
                       this.character = resp;
                       this.character.active_title = this.character.active_title?.replace('{name}', this.character.name);
                       this.exists = true;
+                      this.titleService.setTitle('MurlocMate | Character ' + this.character.active_title + ' ' + this.character.realm.slug)
                       this.spinner.hide();
                     },
                     (err) => { 

@@ -5,6 +5,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { LeaderResult } from '../../interfaces/leaderboards.interfaces';
 import { LeaderboardsService } from '../../services/leaderboards.service';
 import { environment } from 'src/environments/environment';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-leaderboards-page',
@@ -24,6 +25,7 @@ export class LeaderboardsPageComponent implements OnInit {
     private router: Router,
     private leaderboardsService: LeaderboardsService,
     private spinner: NgxSpinnerService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -45,6 +47,7 @@ export class LeaderboardsPageComponent implements OnInit {
       this.leaderboardsService.getLeaderboard(this.url)
         .subscribe(resp => {
           this.leaderboard = resp;
+          this.titleService.setTitle('MurlocMate | WoW PvP Leaderboard ' + this.region + ' ' + this.bracket)
           this.spinner.hide();
         })
     })
@@ -69,6 +72,7 @@ export class LeaderboardsPageComponent implements OnInit {
       .subscribe(resp => {
         this.leaderboard = resp;
         this.router.navigateByUrl(`/leaderboards/${value}`)
+        this.titleService.setTitle('MurlocMate | WoW PvP Leaderboard ' + this.region + ' ' + this.bracket)
         this.spinner.hide();
       })
   }

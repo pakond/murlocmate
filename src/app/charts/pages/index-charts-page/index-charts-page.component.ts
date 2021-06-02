@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ChartsService } from '../../services/charts.service';
 
@@ -18,7 +19,8 @@ export class IndexChartsPageComponent implements OnInit {
 
   constructor(
     private chartsService: ChartsService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +34,7 @@ export class IndexChartsPageComponent implements OnInit {
         console.log(resp[0].realms)
         this.realms = this.sort_realms(resp[0].realms);
         this.total = resp[0].total_entries;
+        this.titleService.setTitle('Murlocmate | World of Warcraft PvP Hub');
         this.spinner.hide()
       });
   }

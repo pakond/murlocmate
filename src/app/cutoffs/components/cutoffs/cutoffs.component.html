@@ -28,8 +28,8 @@
             <div *ngFor="let item of seasonData.rewards">
                 <div *ngIf="item.faction.name === 'Horde'">
                     <hr>
-                    <p>Bracket: {{ item.bracket.pvp_type | titlecase }}</p>
-                    <p>Reward: {{ item.achievement.name | titlecase }}</p>
+                    <p>Bracket: {{ item.bracket.pvp_type }}</p>
+                    <p>Reward: {{ item.achievement.name }}</p>
                     <p>Rating: {{ item.cutoff }}</p>       
                 </div>
             </div>
@@ -44,8 +44,8 @@
             <div *ngFor="let item of seasonData.rewards">
                 <div *ngIf="item.faction.name === 'Alliance'">
                     <hr>
-                    <p>Bracket: {{ item.bracket.pvp_type | titlecase }}</p>
-                    <p>Reward: {{ item.achievement.name |titlecase }}</p>
+                    <p>Bracket: {{ item.bracket.pvp_type }}</p>
+                    <p>Reward: {{ item.achievement.name }}</p>
                     <p>Rating: {{ item.cutoff }}</p>
                 </div>
             </div>

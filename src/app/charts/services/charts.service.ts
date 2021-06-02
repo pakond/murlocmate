@@ -24,6 +24,7 @@ export class ChartsService {
 
     const headers = new HttpHeaders().set('X-Api-Key', environment.apiKey)
 
-    return this.http.get<LeaderResult[]>(url, { headers });
+    return this.http.get<any>(url, { headers });
   }
+
 }

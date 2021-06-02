@@ -1,5 +1,7 @@
+<ngx-spinner [fullScreen]="false" bdColor="rgba(0, 0, 0, 0.4)"></ngx-spinner>
 <div 
-    class="row p-3 justify-content-center" 
+    class="row p-3 justify-content-center"
+    *ngIf="total"
 >
     <div class="row" style="width: 80%;">
         <div
@@ -22,6 +24,76 @@
             (click)="changeBracket('rbg')"
         >
             <strong>RBG</strong>
+        </div>
+    </div>
+    <div class="row rounded p-4 charts-div">
+        <div class="col-lg">
+            <h5 style="color: white;">Top specs</h5>
+            <hr style="margin-top: 2px;">
+            <ul style="list-style: none;">
+                <li *ngFor="let spec of specs">
+                    <img
+                        [src]="spec[0].split('-')[0] | specIcon: spec[0].split('-')[1]"
+                        style="width: 25px; margin: 3px;"
+                        [alt]="spec[0]"
+                    >
+                    <span 
+                        [style]="{'color': spec[0].split('-')[1] | classColor }"
+                    >
+                        {{ spec[0].split('-')[0] }} ({{ spec[1] }}) {{ (spec[1] * 100 / total).toFixed(2) }}%
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg">
+            <h5 style="color: white;">Top clases</h5>
+            <hr style="margin-top: 2px;">
+            <ul style="list-style: none;">
+                <li *ngFor="let wowClass of clases">
+                    <img
+                        [src]="wowClass[0] | classIcon"
+                        style="width: 25px; margin: 3px;"
+                        [alt]="wowClass[0]"
+                    >
+                    <span 
+                        [style]="{'color': wowClass[0] | classColor }"
+                    >
+                        {{ wowClass[0] }} ({{ wowClass[1] }}) {{ (wowClass[1] * 100 / total).toFixed(2) }}%
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg">
+            <h5 style="color: white;">Top clases</h5>
+            <hr style="margin-top: 2px;">
+            <ul style="list-style: none;">
+                <li *ngFor="let race of races">
+                    <img
+                        [src]="race[0] | raceIcon"
+                        style="width: 25px; margin: 3px;"
+                        [alt]="race[0]"
+                    >
+                    <span 
+                        [style]="{'color': race[0] | factionColor }"
+                    >
+                        {{ race[0] }} ({{ race[1] }}) {{ (race[1] * 100 / total).toFixed(2) }}%
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg">
+            <h5 style="color: white;">Top realms</h5>
+            <hr style="margin-top: 2px;">
+            <ul style="list-style: none;">
+                <li *ngFor="let realm of realms">
+                    <img
+                        [src]="realm[0] | realmIcon"
+                        style="width: 25px; margin: 3px;"
+                        [alt]="realm[0]"
+                    >
+                    {{ realm[0] }} ({{ realm[1]['Horde'] + realm[1]['Alliance'] }}) {{ ((realm[1]['Horde'] + realm[1]['Alliance']) * 100 / total).toFixed(2) }}%
+                </li>
+            </ul>
         </div>
     </div>
 </div>

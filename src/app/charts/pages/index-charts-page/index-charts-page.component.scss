@@ -16,3 +16,16 @@
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
+
+.charts-div {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .charts-div {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 85%; 
+        margin: auto; 
+    }
+}

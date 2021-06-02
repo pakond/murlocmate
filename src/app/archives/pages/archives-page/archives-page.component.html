@@ -1,4 +1,4 @@
-<ngx-spinner [fullScreen]="false" bdColor="rgba(0, 0, 0, 0.4)"></ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.4)"></ngx-spinner>
 <div 
     *ngIf="season" 
     class="row p-3 justify-content-center" 
@@ -27,7 +27,7 @@
         </div>    
     </div>
     <app-cutoffs [season]="season"></app-cutoffs>
-    <div class="row" style="width: 80%;">
+    <div class="row pt-4" style="width: 80%;">
         <div
             class="col p-2 text-center bracket"
             [ngClass]="{'active-bracket': bracket === '2v2'}"

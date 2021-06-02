@@ -1,1 +1,27 @@
-<p>index-charts-page works!</p>
+<div 
+    class="row p-3 justify-content-center" 
+>
+    <div class="row" style="width: 80%;">
+        <div
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === '2v2'}"
+            (click)="changeBracket('2v2')"
+        >
+            <strong>2v2</strong>
+        </div>
+        <div 
+            class="col p-2 text-center mid-bracket"
+            [ngClass]="{'active-bracket': bracket === '3v3'}"
+            (click)="changeBracket('3v3')"
+        >
+            <strong>3v3</strong>
+        </div>
+        <div 
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === 'rbg'}"
+            (click)="changeBracket('rbg')"
+        >
+            <strong>RBG</strong>
+        </div>
+    </div>
+</div>

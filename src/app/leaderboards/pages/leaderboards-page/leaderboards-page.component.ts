@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
@@ -17,8 +17,7 @@ export class LeaderboardsPageComponent implements OnInit {
   region: string = 'eu';
   leaderboard!: LeaderResult;
   url: string = '';
-
-  @Input() season?: number;
+  environment = environment;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,7 +29,7 @@ export class LeaderboardsPageComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.route.params.subscribe(params => {
-      this.bracket = params['bracket'] || '';
+      this.bracket = params['bracket'];
       if (this.bracket.includes('f=')) {
         const arrayparams = this.bracket.split('f=');
         this.bracket = arrayparams[0];

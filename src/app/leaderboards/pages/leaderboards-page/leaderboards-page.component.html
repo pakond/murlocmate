@@ -2,7 +2,7 @@
 <div 
     *ngIf="leaderboard" 
     class="row justify-content-center" 
-> 
+>
     <div class="row" style="width: 80%;">
         <div
             class="col p-2 text-center bracket"
@@ -30,6 +30,7 @@
         [leaderboard]="leaderboard"
         [url]="url"
         [bracket]="bracket"
+        [season]="environment.currentSeason"
         (newLeaderboardEvent)="refreshLeaderboard($event)"
     >
     </app-filter>

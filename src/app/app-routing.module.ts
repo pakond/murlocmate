@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', component: IndexChartsPageComponent },
   { path: 'cutoffs', loadChildren: () => import('./cutoffs/cutoffs.module').then( m => m.CutoffsModule) },
   { path: 'charts', loadChildren: () => import('./charts/charts.module').then( m => m.ChartsModule) },
-  { path: 'archives/:season', loadChildren: () => import('./archives/archives.module').then( m => m.ArchivesModule) },
+  { path: 'archives/:season/:bracket', loadChildren: () => import('./archives/archives.module').then( m => m.ArchivesModule) },
   { path: 'leaderboards/:bracket', loadChildren: () => import('./leaderboards/leaderboards.module').then( m => m.LeaderboardsModule) },
   { path: 'character/:region/:realm/:name', component: CharacterDetailPageComponent },
   { path: '**', redirectTo: '' },

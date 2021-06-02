@@ -35,6 +35,7 @@ export class FilterComponent implements OnChanges, AfterViewInit {
   @Input() leaderboard!: LeaderResult;
   @Input() url!: string;
   @Input() bracket!: string;
+  @Input() season!: number;
 
   @Output() newLeaderboardEvent = new EventEmitter<any>();
 
@@ -165,7 +166,7 @@ export class FilterComponent implements OnChanges, AfterViewInit {
         if (this.location.path().includes('leaderboards')) {
           this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         } else if (this.location.path().includes('archives')) {
-          this.location.replaceState('/archives/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+          this.location.replaceState('/archives/' + this.season + '/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
         }
         this.spinner.hide();
     })
@@ -205,7 +206,11 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
-        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        if (this.location.path().includes('leaderboards')) {
+          this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        } else if (this.location.path().includes('archives')) {
+          this.location.replaceState('/archives/' + this.season + '/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        }
         this.spinner.hide();
     })
   }
@@ -266,7 +271,11 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
-        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        if (this.location.path().includes('leaderboards')) {
+          this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        } else if (this.location.path().includes('archives')) {
+          this.location.replaceState('/archives/' + this.season + '/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        }
         this.spinner.hide();
     })
   }
@@ -330,7 +339,11 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
-        this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        if (this.location.path().includes('leaderboards')) {
+          this.location.replaceState('/leaderboards/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        } else if (this.location.path().includes('archives')) {
+          this.location.replaceState('/archives/' + this.season + '/' + this.bracket + '?filter=' + this.url.split(environment.apiUrl + '/pvp-entry-' + this.bracket + '/?')[1]);
+        }
         this.spinner.hide();
     })
   }
@@ -365,7 +378,7 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.spinner.show()
     this.url = environment.apiUrl 
         + '/pvp-entry-' + this.bracket
-        + '/?season__sid=' + environment.currentSeason
+        + '/?season__sid=' + this.season
         + '&region__name=eu'
         + '&page=1'
         + '&ordering=rank'
@@ -374,7 +387,11 @@ export class FilterComponent implements OnChanges, AfterViewInit {
     this.leaderboardsService.getLeaderboard(this.url)
       .subscribe(resp => {
         this.newLeaderboardEvent.emit({ 'leaderboard': resp, 'url': this.url });
-        this.location.replaceState('/leaderboards/' + this.bracket);
+        if (this.location.path().includes('leaderboards')) {
+          this.location.replaceState('/leaderboards/' + this.bracket);
+        } else if (this.location.path().includes('archives')) {
+          this.location.replaceState('/archives/' + this.season + '/' + this.bracket);
+        }
         this.spinner.hide();
     })
   }

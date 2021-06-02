@@ -29,7 +29,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PipesModule
   ],
   exports: [
-    LeaderboardsPageComponent
+    FilterComponent,
+    PaginationComponent,
+    TableComponent
   ]
 })
 export class LeaderboardsModule { }

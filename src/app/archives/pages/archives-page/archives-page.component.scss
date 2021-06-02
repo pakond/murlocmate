@@ -16,3 +16,22 @@
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
+
+.bracket.active-bracket {
+    background-color: rgba(3, 105, 34, 0.6);
+}
+.bracket {
+    border: 1px solid #000000; 
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.mid-bracket.active-bracket {
+    background-color: rgba(3, 105, 34, 0.6);
+}
+.mid-bracket {
+    border-top: 1px solid #000000; 
+    border-bottom: 1px solid #000000; 
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}

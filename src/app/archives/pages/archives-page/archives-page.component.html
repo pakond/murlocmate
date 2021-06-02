@@ -7,25 +7,68 @@
         <div
             class="col p-2 text-center season"
             [ngClass]="{'active-season': season === 27 }"
-            routerLink="/archives/27"
+            routerLink="/archives/27/3v3"
         >
             <strong>27: BFA Season 2</strong>
         </div>
         <div
             class="col p-2 text-center season"
             [ngClass]="{'active-season': season === 28 }"
-            routerLink="/archives/28"
+            routerLink="/archives/28/3v3"
         >
             <strong>28: BFA Season 3</strong>
         </div>
         <div
             class="col p-2 text-center season"
             [ngClass]="{'active-season': season === 29 }"
-            routerLink="/archives/29"
+            routerLink="/archives/29/3v3"
         >
             <strong>29: BFA Season 4</strong>
         </div>    
     </div>
     <app-cutoffs [season]="season"></app-cutoffs>
-    <app-leaderboards-page></app-leaderboards-page>
+    <div class="row" style="width: 80%;">
+        <div
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === '2v2'}"
+            (click)="changeBracket('2v2')"
+        >
+            <strong>2v2</strong>
+        </div>
+        <div 
+            class="col p-2 text-center mid-bracket"
+            [ngClass]="{'active-bracket': bracket === '3v3'}"
+            (click)="changeBracket('3v3')"
+        >
+            <strong>3v3</strong>
+        </div>
+        <div 
+            class="col p-2 text-center bracket"
+            [ngClass]="{'active-bracket': bracket === 'rbg'}"
+            (click)="changeBracket('rbg')"
+        >
+            <strong>RBG</strong>
+        </div>
+    </div>
+    <app-filter
+        [leaderboard]="leaderboard"
+        [url]="url"
+        [bracket]="bracket"
+        [season]="season"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
+    >
+    </app-filter>
+    <app-pagination 
+        [leaderboard]="leaderboard"
+        [url]="url"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
+    >
+    </app-pagination>
+    <app-table [leaderboard]="leaderboard"></app-table>
+    <app-pagination 
+        [leaderboard]="leaderboard"
+        [url]="url"
+        (newLeaderboardEvent)="refreshLeaderboard($event)"
+    >
+    </app-pagination>
 </div>

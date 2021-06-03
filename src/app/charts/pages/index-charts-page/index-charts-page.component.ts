@@ -31,7 +31,6 @@ export class IndexChartsPageComponent implements OnInit {
         this.specs = this.sort_object(resp[0].specs)
         this.clases = this.sort_object(resp[0].clases);
         this.races = this.sort_object(resp[0].races);
-        console.log(resp[0].realms)
         this.realms = this.sort_realms(resp[0].realms);
         this.total = resp[0].total_entries;
         this.titleService.setTitle('Murlocmate | World of Warcraft PvP Hub');

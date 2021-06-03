@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'http://172.105.85.125/api',
+  apiUrl: 'https://api-eu.murlocmate.com',
   apiKey: '8khn8Ka0.Ls7YAi8CCCMM8skteHeLbgyYuOPaOvDx',
-  staticImg: 'http://172.105.85.125/static/img/',
-  appHost: 'http://localhost:4200',
+  staticImg: 'https://api-eu.murlocmate.com/static/img/',
+  appHost: 'https://murlocmate.com',
   currentSeason: 30,
   production: false
 };
